@@ -1,0 +1,201 @@
+body {
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    color: gray;
+}
+
+nav{
+    background-color: #fcfcfc;
+    justify-content: center;
+    display: flex;
+    padding-top: 5px;
+    border-top: solid purple;
+    margin-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: thin solid rgb(231, 231, 231);
+    font-weight: lighter;
+    font-size: larger;
+}
+
+
+nav p a{
+    text-decoration: none;
+    text-align: center;
+    color:   rgb(110, 121, 130);
+    margin: 10px;
+    padding: 15px;
+    flex: 1;
+}
+div {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    flex-direction: row;
+}
+figure {
+    margin: 10px;
+    justify-content: center;
+    text-align: center;
+    width: 20%;
+
+}
+
+article {
+    padding-left: 15px;
+    border-left: thin solid rgb(244, 244, 244);;
+    width: 45%;
+}
+
+a {
+    text-decoration: none;
+    color: purple;
+}
+
+img {
+    margin-top: 0px;
+    border-radius: 60%;
+    height: 40%;
+    border: solid grey;
+}
+
+footer p {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+    border-top: thin solid rgb(244, 244, 244);
+    font-size: small;
+}
+
+article h1 {
+    font-size: xx-large;
+}
+
+progress {
+    width: 100%;
+    border-radius: 8px;
+    border-color: whitesmoke;
+}
+
+table {
+    padding-top: 5%;
+    width: 90%;
+}
+
+article strong {
+    font-weight: bolder;
+    font-size: larger;
+    display: block;
+}
+article {
+    color: black;
+}
+
+h1 {
+    font-weight: lighter;
+    color: gray;
+    margin-bottom: 0px;
+    padding-bottom: 15px;
+}
+
+h3 {
+    font-weight: lighter;
+    margin: 5px;
+}
+
+h5 {
+    font-weight: lighter;
+    margin: 0px;
+}
+
+ul {
+    list-style-type: '-';
+    padding-top: 2%;
+}
+
+ul li {
+    font-size: large;
+    padding-top: 2%;
+}
+
+#CurrentPage {
+    color: purple ;
+}
+
+.MorePadding {
+    padding-top: 5%;
+}
+
+.Align-Right {
+    justify-content: flex-end;
+}
+
+@media only screen and (max-width: 800px) {
+    body {
+        justify-content: center;
+    }
+    div {
+        display: flex;
+        margin-top: 10px;
+        flex-direction: column;
+    }
+
+    nav{
+        background-color: #fcfcfc;
+        justify-content: center;
+        display: flex;
+        padding-top: 5px;
+        border-top: solid purple;
+        margin-top: 5px;
+        padding-bottom: 5px;
+        border-bottom: thin solid rgb(231, 231, 231);
+        font-weight: lighter;
+        font-size: large;
+    }
+
+    nav p a{
+        text-decoration: none;
+        text-align: center;
+        color: rgb(110, 121, 130);
+        margin: 5px;
+        padding: 5px;
+    }
+
+    figure {
+        margin: 5px;
+        margin-bottom: 0px;
+        border-bottom: 0px;
+        padding-bottom: 0px;
+        justify-content: center;
+        text-align: center;
+        width: inherit;
+    }
+
+    article {
+        justify-content: center;
+        padding-left: 0px;
+        border-left: none;
+        width: inherit;  
+    }
+
+    article h1 {
+        justify-content: center;
+        text-align: center;
+        flex: 1;
+    }
+    
+    article table {
+        width: 100%;
+        padding-right: 0px;
+        margin-right: 0px;
+        border-right: 0px;
+        padding-left: 15%;
+    } 
+
+
+    .MorePadding {
+        padding-top: 5%;
+        text-align: center;
+    }
+
+}
