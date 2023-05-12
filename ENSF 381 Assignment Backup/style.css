@@ -55,7 +55,7 @@ a {
 img {
     margin-top: 0px;
     border-radius: 60%;
-    height: 20%;
+    height: 40%;
     border: solid grey;
 }
 
@@ -108,11 +108,6 @@ h5 {
     margin: 0px;
 }
 
-h4 {
-    font-weight: lighter;
-    margin: 0px;
-}
-
 ul {
     list-style-type: '-';
     padding-top: 2%;
@@ -149,7 +144,6 @@ ul li {
         background-color: #fcfcfc;
         justify-content: center;
         display: flex;
-        flex-direction: column;
         padding-top: 5px;
         border-top: solid purple;
         margin-top: 5px;
@@ -157,7 +151,6 @@ ul li {
         border-bottom: thin solid rgb(231, 231, 231);
         font-weight: lighter;
         font-size: large;
-        text-align: center;
     }
 
     nav p a{
@@ -176,14 +169,6 @@ ul li {
         justify-content: center;
         text-align: center;
         width: inherit;
-        height: 500px;
-    }
-
-    img {
-        margin-top: 0px;
-        border-radius: 60%;
-        height: 50%;
-        border: solid grey;
     }
 
     article {
