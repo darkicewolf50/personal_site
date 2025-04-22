@@ -1,0 +1,64 @@
+:root {
+	--tech-gap: 4svw;
+}
+.tech-cat {
+	border: 1px solid salmon;
+	display: flex;
+	flex-direction: column;
+	padding-left: 4svw;
+}
+.tech-cat h3 {
+	display: flex;
+	width: 80%;
+	border-bottom: 4px solid purple;
+	margin: 2svh 0px;
+	margin-left: 4svw;
+	padding-left: 2svw;
+	padding-bottom: 1svh;
+}
+
+.tech-row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: var(--tech-gap);
+}
+
+.tech-card {
+	border: 1px solid whitesmoke;
+	flex: 0 1 calc(33.3% - var(--tech-gap));
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	margin-bottom: 1svh;
+	text-decoration: none;
+	color: inherit;
+}
+
+.tech-card img {
+	/* height: 40px; */
+	padding-top: 2svh;
+
+	height: 100px;
+}
+
+.tech-card progress {
+	width: 90%;
+	margin-bottom: 0.5svh;
+	overflow: hidden;
+	appearance: none;
+	border-radius: 999px;
+}
+
+/* for chromium browsers */
+.tech-card progress::-webkit-progress-value {
+	background-color: steelblue;
+	/* border-radius: 999px; */
+}
+
+/* for firefox browsers */
+.tech-card progress::-moz-progress-bar {
+	background-color: steelblue;
+	/* border-radius: 999px; */
+}

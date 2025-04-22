@@ -4,3 +4,6 @@
 
 mod hero;
 pub use hero::Hero;
+
+mod techs;
+pub use techs::{TechCat, TechDes};
