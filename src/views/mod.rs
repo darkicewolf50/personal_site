@@ -19,3 +19,11 @@ pub use navbar::Navbar;
 
 mod home;
 pub use home::Home;
+
+mod footer;
+pub use footer::Ender;
+
+mod contact;
+pub use contact::Contact;
+
+mod projects;

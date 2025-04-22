@@ -1,0 +1,74 @@
+#contact {
+	display: flex;
+	flex-direction: row;
+	gap: 2svw;
+	align-items: center;
+}
+
+#contact img {
+	flex: 1 1 50%;
+	border-radius: 100%;
+	max-width: 40%;
+	object-fit: cover;
+	display: block;
+}
+
+#contact div {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+#contact div ul {
+	display: flex;
+	flex-direction: column;
+}
+
+#contact div ul div {
+	display: flex;
+	flex-direction: row;
+}
+
+#contact a {
+	text-decoration: none;
+	color: inherit;
+}
+
+#contact h4 {
+	text-align: center;
+	margin-bottom: 0px;
+}
+
+#contact div ul {
+	list-style-type: none;
+	gap: 1svh;
+	padding: 0px;
+}
+
+#contact div ul li {
+	justify-content: flex-start;
+
+	border: 1px solid whitesmoke;
+}
+
+#contact div ul li a {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+#contact div ul li a div {
+	display: flex;
+	flex-direction: column;
+}
+
+#contact ul li p {
+	padding: 0px;
+	margin: 0px;
+}
+
+#contact ul li img {
+	height: 80px;
+	object-fit: contain;
+	border-radius: 0px;
+}

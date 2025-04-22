@@ -10,7 +10,7 @@
 .tech-cat h3 {
 	display: flex;
 	width: 80%;
-	border-bottom: 4px solid purple;
+	border-bottom: var(--underlineTitle);
 	margin: 2svh 0px;
 	margin-left: 4svw;
 	padding-left: 2svw;

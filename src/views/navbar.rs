@@ -1,7 +1,9 @@
+use crate::views::Ender;
 use crate::Route;
 use dioxus::prelude::*;
 
 const NAVBAR_CSS: Asset = asset!("/assets/styling/navbar.css");
+const STD_COLOUR_AND_FONTS_CSS: Asset = asset!("assets/styling/standardColoursandFonts.css");
 
 /// The Navbar component that will be rendered on all pages of our app since every page is under the layout.
 ///
@@ -12,6 +14,7 @@ const NAVBAR_CSS: Asset = asset!("/assets/styling/navbar.css");
 pub fn Navbar() -> Element {
     rsx! {
         document::Link { rel: "stylesheet", href: NAVBAR_CSS }
+        document::Link { rel: "stylesheet", href: STD_COLOUR_AND_FONTS_CSS }
 
         div { id: "navbar",
             Link { to: Route::NewHome {}, "Home" }
@@ -21,5 +24,7 @@ pub fn Navbar() -> Element {
         // The `Outlet` component is used to render the next component inside the layout. In this case, it will render either
         // the [`Home`] or [`Blog`] component depending on the current route.
         Outlet::<Route> {}
+
+        Ender {}
     }
 }
