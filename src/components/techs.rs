@@ -1,7 +1,5 @@
-use std::collections::HashMap;
-use std::hash::{BuildHasherDefault, DefaultHasher};
-
 use dioxus::prelude::*;
+use std::collections::HashMap;
 
 const TECHS_CSS: Asset = asset!("/assets/styling/techs.css");
 
