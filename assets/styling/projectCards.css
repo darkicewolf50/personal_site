@@ -1,8 +1,15 @@
+.project-section {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
 .project-card {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
 	/* background-color: aqua; */
+	flex: 0 1 48%;
+	gap: 1svw;
 }
 
 .project-card img {
@@ -18,8 +25,8 @@
 
 	border-bottom: var(--underlineTitle);
 	width: 80%;
-	margin: 0px 4svw;
-	padding: 0px 4svw;
+	margin: 0px 2svw;
+	padding: 0px 2svw;
 
 	justify-content: space-between;
 	align-items: center;

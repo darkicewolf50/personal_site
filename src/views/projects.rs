@@ -8,9 +8,23 @@ pub fn Projects() -> Element {
             h2 { "Projects" }
             p { "Top Featured and Recent Projects" }
         }
-        div {
+        div { class: "project-section",
             ProjectCards {
                 project_name: "Project Name",
+                website_prop: "https://google.com",
+                github_prop: "https://google.com",
+                techs_used: vec!["Rust", "Rust", "Rust", "Rust", "Rust", "Rust", "Rust"],
+                project_des: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet risus tristique nisi euismod elementum. Duis et est sed neque pulvinar sodales sit amet non purus. Nam ut ultrices enim. Vestibulum blandit sapien dui. Aliquam sit amet ex quis lectus consectetur tempor at non arcu. Curabitur placerat justo sed nulla lobortis molestie. Sed eget justo sit amet justo lobortis tempus. Phasellus laoreet leo est, in lacinia ante aliquet ut. Etiam ultricies fermentum dolor id pretium. Sed dictum nisl id felis pulvinar varius.",
+            }
+            ProjectCards {
+                project_name: "Project Name 2",
+                website_prop: "https://google.com",
+                github_prop: "https://google.com",
+                techs_used: vec!["Rust", "Rust", "Rust", "Rust", "Rust", "Rust", "Rust"],
+                project_des: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet risus tristique nisi euismod elementum. Duis et est sed neque pulvinar sodales sit amet non purus. Nam ut ultrices enim. Vestibulum blandit sapien dui. Aliquam sit amet ex quis lectus consectetur tempor at non arcu. Curabitur placerat justo sed nulla lobortis molestie. Sed eget justo sit amet justo lobortis tempus. Phasellus laoreet leo est, in lacinia ante aliquet ut. Etiam ultricies fermentum dolor id pretium. Sed dictum nisl id felis pulvinar varius.",
+            }
+            ProjectCards {
+                project_name: "Project Name 3",
                 website_prop: "https://google.com",
                 github_prop: "https://google.com",
                 techs_used: vec!["Rust", "Rust", "Rust", "Rust", "Rust", "Rust", "Rust"],
