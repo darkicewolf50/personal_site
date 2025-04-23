@@ -1,5 +1,5 @@
+use crate::helper_fun::tech_table_lookup;
 use dioxus::prelude::*;
-use std::collections::HashMap;
 
 const TECHS_CSS: Asset = asset!("/assets/styling/techs.css");
 
@@ -31,67 +31,4 @@ pub fn TechCat(cat: String, tech_vec: Vec<&'static str>) -> Element {
             }
         }
     }
-}
-
-#[derive(PartialEq, Props, Clone, Copy)]
-pub struct TechDes {
-    // to be removed soon
-    pub lang_logo: &'static str,
-    pub project_site: &'static str,
-    pub skill_level: u8,
-}
-
-pub fn tech_table_lookup(to_lookup: &str) -> TechDes {
-    let techs_tools_frameworks_lookup = HashMap::from([
-        (
-            "Rust",
-            TechDes {
-                lang_logo: "https://www.rust-lang.org/static/images/rust-logo-blk.svg",
-                project_site: "https://www.rust-lang.org",
-                skill_level: 40,
-            },
-        ),
-        (
-            "Python",
-            TechDes {
-                lang_logo: "https://www.svgrepo.com/show/452091/python.svg",
-                project_site: "https://www.python.org",
-                skill_level: 50,
-            },
-        ),
-        (
-            "JavaScript",
-            TechDes {
-                lang_logo: "https://www.svgrepo.com/show/303206/javascript-logo.svg",
-                project_site: "https://www.python.org",
-                skill_level: 60,
-            },
-        ),
-        (
-            "YAML",
-            TechDes {
-                lang_logo: "https://yaml.org/favicon.svg",
-                project_site: "https://yaml.org",
-                skill_level: 95,
-            },
-        ),
-        (
-            "C",
-            TechDes {
-                lang_logo: "https://www.c-language.org/logo.svg",
-                project_site: "https://www.c-language.org",
-                skill_level: 30,
-            },
-        ),
-        (
-            "C++",
-            TechDes {
-                lang_logo: "https://www.svgrepo.com/show/452183/cpp.svg",
-                project_site: "https://cplusplus.com",
-                skill_level: 30,
-            },
-        ),
-    ]);
-
-    techs_tools_frameworks_lookup[to_lookup]
 }

@@ -1,48 +1,33 @@
+use std::collections::HashMap;
+
+use crate::helper_fun::{tech_table_lookup, TechDes};
 use dioxus::prelude::*;
 
 const ENDER_CSS: Asset = asset!("/assets/styling/ender.css");
 
 #[component]
 pub fn Ender() -> Element {
+    // gets list of items to get
+    let footer_info_to_get = vec!["Github", "Email", "LinkedIn", "Twitch", "Youtube"];
+
+    // used so that I dont need to copy paste the same link/info everywhere
+    let mut footer_info: HashMap<&str, TechDes> = HashMap::new();
+    for used_tech_item in footer_info_to_get {
+        footer_info.insert(used_tech_item, tech_table_lookup(used_tech_item));
+    }
     rsx! {
         document::Link { rel: "stylesheet", href: ENDER_CSS }
         footer {
             p { "Brock Tomlinson © 2025" }
             div {
-                a { href: "https://github.com/darkicewolf50",
-                    img {
-                        src: "https://www.svgrepo.com/show/512317/github-142.svg",
-                        alt: "Github logo",
+                for (footer_name , footer_item) in footer_info {
+                    a { href: "{footer_item.project_site}",
+                        img {
+                            src: "{footer_item.lang_logo}",
+                            alt: "{footer_name}'s logo/icon",
+                        }
+                        p { "{footer_name}" }
                     }
-                    p { "Github" }
-                }
-                a { href: "mailto:darkicewolf50@gmail.com",
-                    img {
-                        src: "https://www.svgrepo.com/show/491226/email.svg",
-                        alt: "Email logo/icon",
-                    }
-                    p { "Email" }
-                }
-                a { href: "https://www.linkedin.com/in/brock-tomlinson/",
-                    img {
-                        src: "https://www.svgrepo.com/show/521725/linkedin.svg",
-                        alt: "LinkedIn logo",
-                    }
-                    p { "LinkedIn" }
-                }
-                a { href: "https://www.twitch.tv/darkicewolf50",
-                    img {
-                        src: "https://www.svgrepo.com/show/519925/twitch.svg",
-                        alt: "Twitch logo",
-                    }
-                    p { "Twitch" }
-                }
-                a { href: "https://www.youtube.com/@darkicewolf50",
-                    img {
-                        src: "https://www.svgrepo.com/show/521936/youtube.svg",
-                        alt: "Youtube logo",
-                    }
-                    p { "Youtube" }
                 }
             }
         }
