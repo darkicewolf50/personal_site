@@ -1,0 +1,20 @@
+.technologies {
+	display: flex;
+	flex-direction: column;
+}
+
+/* .technologies p {
+	width: 90%;
+	margin: 2svh 0px;
+	margin-left: 2svw;
+	padding-left: 2svw;
+	padding-bottom: 1svh;
+} */
+
+.technologies-cat {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	column-gap: 2svw;
+	row-gap: 1svh;
+}

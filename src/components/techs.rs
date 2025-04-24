@@ -9,7 +9,7 @@ pub fn TechCard(tech_props: &'static str) -> Element {
 
     rsx! {
         a { class: "tech-card", href: "{props_tech.project_site}",
-            img { src: "{props_tech.lang_logo}", alt: "{tech_props}'s logo" }
+            img { src: "{props_tech.tech_logo}", alt: "{tech_props}'s logo" }
             h4 { "{tech_props}" }
             progress { value: props_tech.skill_level, max: 100 }
         }
@@ -17,13 +17,11 @@ pub fn TechCard(tech_props: &'static str) -> Element {
 }
 
 #[component]
-pub fn TechCat(cat: String, tech_vec: Vec<&'static str>) -> Element {
+pub fn TechCat(cat: &'static str, tech_vec: Vec<&'static str>) -> Element {
     rsx! {
         document::Link { rel: "stylesheet", href: TECHS_CSS }
         div { class: "tech-cat",
-            div {
-                h3 { "{cat}" }
-            }
+            h3 { "{cat}" }
             div { class: "tech-row",
                 for tech in tech_vec {
                     TechCard { tech_props: tech }

@@ -23,7 +23,7 @@ pub fn Ender() -> Element {
                 for (footer_name , footer_item) in footer_info {
                     a { href: "{footer_item.project_site}",
                         img {
-                            src: "{footer_item.lang_logo}",
+                            src: "{footer_item.tech_logo}",
                             alt: "{footer_name}'s logo/icon",
                         }
                         p { "{footer_name}" }
