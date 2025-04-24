@@ -45,8 +45,8 @@ pub fn Home() -> Element {
                     TechCat { cat: "Backend", tech_vec: backend }
                     TechCat { cat: "Frontend", tech_vec: frontend }
                     TechCat { cat: "Databases", tech_vec: databases }
+                    TechCat { cat: "Platforms", tech_vec: platforms }
                     TechCat { cat: "Tools", tech_vec: tools }
-                    TechCat { cat: "Platfroms", tech_vec: platforms }
                 }
             }
             Contact {}

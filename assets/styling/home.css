@@ -15,6 +15,6 @@
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
-	column-gap: 2svw;
+	column-gap: 1svw;
 	row-gap: 1svh;
 }

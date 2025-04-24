@@ -1,3 +1,8 @@
 :root {
 	--underlineTitle: 4px solid purple;
+	--underlineTitleBorderRadius: 4px;
+	--img-width: 32px;
+	--img-height: 32px;
+	--card-background-color: rgba(38, 38, 38, 0.5);
+	--card-border-radius: 0.5rem;
 }
