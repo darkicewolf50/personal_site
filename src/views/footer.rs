@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use crate::helper_fun::{tech_table_lookup, TechDes};
+use crate::helper_fun::{get_tech_logos_from_str, tech_table_lookup, TechDes};
 use dioxus::prelude::*;
 
 const ENDER_CSS: Asset = asset!("/assets/styling/ender.css");
@@ -13,10 +13,7 @@ pub fn Ender() -> Element {
     // used so that I dont need to copy paste the same link/info everywhere
     let mut footer_info: HashMap<&str, TechDes> = HashMap::new();
     for used_tech_item in footer_info_to_get {
-        footer_info.insert(
-            used_tech_item,
-            tech_table_lookup(used_tech_item, false, false),
-        );
+        footer_info.insert(used_tech_item, *tech_table_lookup(used_tech_item));
     }
     rsx! {
         document::Link { rel: "stylesheet", href: ENDER_CSS }

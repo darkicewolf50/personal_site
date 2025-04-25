@@ -43,12 +43,13 @@ pub fn ProjectCards(
     project_name: &'static str,
     techs_used: Vec<&'static str>,
     project_des: &'static str,
+    #[props(default = "https://picsum.photos/200")] project_img: &'static str,
 ) -> Element {
     rsx! {
         document::Link { href: PROJECT_CARDS_CSS, rel: "stylesheet" }
         div { class: "project-card",
             img {
-                src: "https://picsum.photos/200",
+                src: "{project_img}",
                 alt: "dashboard of project or the logo of the project",
             }
             div { class: "project-title-info",

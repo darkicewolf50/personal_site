@@ -4,8 +4,8 @@ use dioxus::prelude::*;
 const TECHS_CSS: Asset = asset!("/assets/styling/techs.css");
 
 #[component]
-pub fn TechCard(tech_props: &'static str, high_skill: bool, low_skill: bool) -> Element {
-    let props_tech = tech_table_lookup(tech_props, high_skill, low_skill);
+pub fn TechCard(tech_props: &'static str) -> Element {
+    let props_tech = tech_table_lookup(tech_props);
 
     rsx! {
         a { class: "tech-card", href: "{props_tech.project_site}",
@@ -26,8 +26,6 @@ pub fn TechCat(cat: &'static str, tech_vec: Vec<&'static str>) -> Element {
                 for tech in tech_vec {
                     TechCard {
                         tech_props: tech,
-                        high_skill: true,
-                        low_skill: false,
                     }
                 }
             }
