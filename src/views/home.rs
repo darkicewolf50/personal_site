@@ -1,4 +1,4 @@
-use crate::components::TechCat;
+use crate::components::{Experience, TechCat};
 use crate::views::{Contact, Projects};
 use dioxus::prelude::*;
 
@@ -10,8 +10,6 @@ pub fn Home() -> Element {
         "Rust",
         "Python",
         "YAML",
-        "C",
-        "C++",
         "HTML5",
         "CSS",
         "JavaScript",
@@ -52,6 +50,13 @@ pub fn Home() -> Element {
             }
             Contact {}
             Projects {}
+            div { id: "experience",
+                h2 { "Experience" }
+                div {
+                    Experience { professional_jobs: true }
+                    Experience { professional_jobs: false }
+                }
+            }
         }
     )
 }

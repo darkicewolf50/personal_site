@@ -14,9 +14,9 @@
 .tech-cat h3 {
 	border-bottom: var(--underlineTitle);
 	border-radius: var(--underlineTitleBorderRadius);
-	margin: 2svh 1svw;
-
-	padding-left: 2svw;
+	display: flex;
+	margin: 2svh 2svw;
+	padding: 0svh 2svw;
 	padding-bottom: 1svh;
 }
 

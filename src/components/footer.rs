@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use crate::helper_fun::{get_tech_logos_from_str, tech_table_lookup, TechDes};
+use crate::helper_fun::{tech_table_lookup, TechDes};
 use dioxus::prelude::*;
 
 const ENDER_CSS: Asset = asset!("/assets/styling/ender.css");

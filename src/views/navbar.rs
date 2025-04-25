@@ -1,4 +1,4 @@
-use crate::views::Ender;
+use crate::components::Ender;
 use crate::Route;
 use dioxus::prelude::*;
 
@@ -18,7 +18,7 @@ pub fn Navbar() -> Element {
 
         div { id: "navbar",
             Link { to: Route::NewHome {}, "Home" }
-            Link { to: Route::Blog { id: 0 }, "Blogs" }
+            Link { to: Route::Blogs { id: 0 }, "Blogs" }
         }
 
         // The `Outlet` component is used to render the next component inside the layout. In this case, it will render either

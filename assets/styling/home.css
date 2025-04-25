@@ -3,18 +3,27 @@
 	flex-direction: column;
 }
 
-/* .technologies p {
-	width: 90%;
-	margin: 2svh 0px;
-	margin-left: 2svw;
-	padding-left: 2svw;
-	padding-bottom: 1svh;
-} */
-
 .technologies-cat {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
 	column-gap: 1svw;
 	row-gap: 1svh;
+}
+
+#experience {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 4svh;
+	background-color: var(--card-background-color);
+	border-radius: var(--card-border-radius);
+}
+
+#experience div {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	background-color: var(--card-background-color);
+	border-radius: var(--card-border-radius);
+	margin: 4svh 0px;
 }

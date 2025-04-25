@@ -1,8 +1,36 @@
 #blog {
-  margin-top: 50px;
+	margin-top: 50px;
 }
 
 #blog a {
-  color: #ffffff;
-  margin-top: 50px;
+	color: #ffffff;
+	margin-top: 50px;
+}
+
+#blogs {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 80svh;
+}
+
+#blogs h1 {
+	border-bottom: var(--underlineTitle);
+	border-radius: var(--underlineTitleBorderRadius);
+}
+
+#blogs button {
+	background-color: var(--card-background-color);
+	border-radius: var(--card-border-radius);
+	border: none;
+	color: #ffffff;
+	font-size: xx-large;
+	padding: 1rem;
+}
+
+#blogs a {
+	text-decoration: none;
+	background-color: var(--card-background-color);
+	border-radius: var(--card-border-radius);
 }

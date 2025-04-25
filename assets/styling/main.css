@@ -5,12 +5,11 @@ body {
 	margin: 20px;
 }
 h2 {
-	width: 90%;
 	border-bottom: var(--underlineTitle);
 	border-radius: var(--underlineTitleBorderRadius);
-	margin: 2svh 0px;
-	margin-left: 2svw;
-	padding-left: 2svw;
+	display: flex;
+	margin: 2svh 2svw;
+	padding: 0svh 2svw;
 	padding-bottom: 1svh;
 }
 /* 

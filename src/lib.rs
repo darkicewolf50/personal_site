@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 
 // use components::Hero;
-use views::{Blog, Home, Navbar, NewHome};
+use views::{Blog, Blogs, Home, Navbar, NewHome};
 
 /// Define a components module that contains all shared components for our app.
 mod components;
@@ -31,7 +31,10 @@ pub enum Route {
         #[route("/blogs/:id")]
         // Fields of the route variant will be passed to the component as props. In this case, the blog component must accept
         // an `id` prop of type `i32`.
-        Blog { id: i32 },
+        Blogs { id: i32 },
+
+        #[route("/blogs/:blog_title")]
+        Blog {blog_title: String},
 
         #[route("/test")]
         Hello {},

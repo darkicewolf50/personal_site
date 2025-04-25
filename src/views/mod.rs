@@ -12,16 +12,13 @@ mod new_home;
 pub use new_home::NewHome;
 
 mod blog;
-pub use blog::Blog;
+pub use blog::{Blog, Blogs};
 
 mod navbar;
 pub use navbar::Navbar;
 
 mod home;
 pub use home::Home;
-
-mod footer;
-pub use footer::Ender;
 
 mod contact;
 pub use contact::Contact;
