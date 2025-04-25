@@ -17,8 +17,10 @@ pub fn Navbar() -> Element {
         document::Link { rel: "stylesheet", href: STD_COLOUR_AND_FONTS_CSS }
 
         div { id: "navbar",
-            Link { to: Route::NewHome {}, "Home" }
+            Link { to: Route::Home {}, "Home" }
+            Link { to: Route::Projects {}, "Projects" }
             Link { to: Route::Blogs { id: 0 }, "Blogs" }
+            Link { to: Route::Contact {}, "Contact" }
         }
 
         // The `Outlet` component is used to render the next component inside the layout. In this case, it will render either

@@ -1,3 +1,27 @@
+#home-intro {
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	margin-top: 2svh;
+	background-color: var(--card-background-color);
+	border-radius: var(--card-border-radius);
+}
+
+#home-intro h1 {
+	border-bottom: var(--underlineTitle);
+	border-radius: var(--underlineTitleBorderRadius);
+	display: flex;
+	margin: 2svh 2svw;
+	padding: 0svh 2svw;
+	padding-bottom: 1svh;
+}
+
+#home-intro p {
+	margin: 1svh 4svw;
+	padding: 0svh 2svw;
+	padding-bottom: 1svh;
+}
+
 .technologies {
 	display: flex;
 	flex-direction: column;

@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 
 // use components::Hero;
-use views::{Blog, Blogs, Home, Navbar, NewHome};
+use views::{Blog, Blogs, Contact, Home, Navbar, NewHome, Projects};
 
 /// Define a components module that contains all shared components for our app.
 mod components;
@@ -36,8 +36,11 @@ pub enum Route {
         #[route("/blogs/:blog_title")]
         Blog {blog_title: String},
 
-        #[route("/test")]
-        Hello {},
+        #[route("/projects")]
+        Projects {},
+
+        #[route("/contact")]
+        Contact {},
 
         #[route("/new_home")]
         NewHome {},
@@ -46,19 +49,18 @@ pub enum Route {
         PageNotFound { route: Vec<String> },
 }
 
-#[component]
-fn Hello() -> Element {
-    rsx!(
-        div {
-            h1 { "hello" }
-        }
-    )
-}
+const NOT_FOUND_CSS: Asset = asset!("/assets/styling/notFound.css");
 
 #[component]
 fn PageNotFound(route: Vec<String>) -> Element {
     rsx! {
-        h1 { "Page not found" }
-        p { "We are terribly sorry, but the page you requested doesn't exist." }
+        document::Link { rel: "stylesheet", href: NOT_FOUND_CSS }
+        div { id: "not-found",
+            h1 { "Page not found" }
+            p { "We are terribly sorry, but the page you requested doesn't exist." }
+            dioxus::prelude::Link { to: Route::Home {},
+                button { "Return Home Here" }
+            }
+        }
     }
 }

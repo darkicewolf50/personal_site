@@ -1,0 +1,27 @@
+#not-found {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 80svh;
+}
+
+#not-found h1 {
+	border-bottom: var(--underlineTitle);
+	border-radius: var(--underlineTitleBorderRadius);
+}
+
+#not-found button {
+	background-color: var(--card-background-color);
+	border-radius: var(--card-border-radius);
+	border: none;
+	color: #ffffff;
+	font-size: xx-large;
+	padding: 1rem;
+}
+
+#not-found a {
+	text-decoration: none;
+	background-color: var(--card-background-color);
+	border-radius: var(--card-border-radius);
+}
