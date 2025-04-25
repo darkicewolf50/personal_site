@@ -3,7 +3,10 @@ footer {
 	flex-direction: column;
 	text-align: center;
 
-	background-color: #d3d3d3;
+	background-color: var(--card-background-color);
+	border-radius: var(--card-border-radius);
+
+	/* background-color: #d3d3d3; */
 }
 
 footer div {
@@ -15,14 +18,13 @@ footer div {
 
 footer img {
 	height: 60px;
+	filter: invert() hue-rotate(180deg);
 }
 
 footer a {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-
-	border: 1px solid lightgray;
 	text-decoration: none;
 	color: inherit;
 }

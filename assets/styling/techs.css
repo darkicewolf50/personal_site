@@ -39,7 +39,7 @@
 	flex: 0 1 70px;
 	text-decoration: none;
 	color: inherit;
-	padding: 0px 0svw;
+	padding: 0px 0.5svw;
 	padding-top: 2svh;
 	padding-bottom: 0.5svh;
 	background-color: var(--card-background-color);

@@ -84,6 +84,8 @@
 	width: var(--img-height);
 	object-fit: contain;
 	border-radius: 0px;
+	background-color: transparent;
+	filter: invert() hue-rotate(180deg);
 }
 
 @media only screen and (max-width: 430px) {

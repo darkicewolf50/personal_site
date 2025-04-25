@@ -61,10 +61,7 @@ pub fn ProjectCards(
                     }
                     if let Some(site) = website_prop {
                         a { href: "{site}",
-                            img {
-                                src: "https://www.svgrepo.com/show/490809/internet.svg",
-                                alt: "Internet icon",
-                            }
+                            get_tech_logos_from_str { used_tech: "Internet" }
                         }
                     }
                 }

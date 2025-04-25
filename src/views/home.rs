@@ -39,7 +39,7 @@ pub fn Home() -> Element {
             div { class: "technologies",
 
                 h2 { "Technology" }
-                p { "Here is what I prefer to use." }
+                p { "Here is what I developed skills in." }
                 div { class: "technologies-cat",
                     TechCat { cat: "Languages", tech_vec: languages }
                     TechCat { cat: "Backend", tech_vec: backend }

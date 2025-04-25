@@ -54,7 +54,9 @@
 .project-title-info img {
 	height: var(--img-width);
 	width: var(--img-height);
-	padding: 1svh 0px;
+	margin: 1svh 6px;
+	padding: 0px;
+	filter: invert() hue-rotate(180deg);
 }
 
 .project-title-info div {
@@ -88,5 +90,6 @@
 	aspect-ratio: 1;
 	height: var(--img-width);
 	width: var(--img-height);
+
 	/* flex: 0 1 19%; */
 }
