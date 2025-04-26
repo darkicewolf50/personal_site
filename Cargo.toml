@@ -1,6 +1,6 @@
 [package]
 name = "personal_site"
-version = "0.1.0"
+version = "1.0.0"
 authors = ["darkicewolf50 <brock.tomlinson@ucalgary.ca>"]
 edition = "2021"
 

@@ -18,19 +18,23 @@
 }
 
 .project-card img {
-	max-width: 100%;
+	max-width: 96%;
+	max-height: 200px;
 
 	justify-self: center;
+
+	margin: 0svh 1svw;
 	padding-top: 1svh;
 	object-fit: contain;
 	color: transparent;
 	display: flex;
-	aspect-ratio: 3/2;
 }
 
 .project-title-info {
 	display: flex;
 	flex-direction: row;
+
+	height: 50px;
 
 	border-bottom: var(--underlineTitle);
 	border-radius: var(--underlineTitleBorderRadius);

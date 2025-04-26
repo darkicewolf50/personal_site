@@ -10,25 +10,48 @@ pub fn Projects() -> Element {
         }
         div { class: "project-section",
             ProjectCards {
-                project_name: "Project Name",
-                website_prop: "https://google.com",
-                github_prop: "https://google.com",
-                techs_used: vec!["Rust", "Rust", "Rust", "Rust", "Rust", "Rust", "Rust"],
-                project_des: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet risus tristique nisi euismod elementum. Duis et est sed neque pulvinar sodales sit amet non purus. Nam ut ultrices enim. Vestibulum blandit sapien dui. Aliquam sit amet ex quis lectus consectetur tempor at non arcu. Curabitur placerat justo sed nulla lobortis molestie. Sed eget justo sit amet justo lobortis tempus. Phasellus laoreet leo est, in lacinia ante aliquet ut. Etiam ultricies fermentum dolor id pretium. Sed dictum nisl id felis pulvinar varius.",
+                project_name: "Portfolio Site",
+                website_prop: "https://darkicewolf50.github.io",
+                github_prop: "https://github.com/darkicewolf50/darkicewolf50.github.io",
+                project_img: "https://res.cloudinary.com/dpgrgsh7g/image/upload/v1745630861/Portfolio_site_k4mhmj.png",
+                techs_used: vec!["Rust", "CSS", "Dioxus", "Github Actions", "Git", "Github"],
+                project_des: "This project was a great test of my newly learned Rust.
+                It was certainly interesting to go through all of the stages of front end web developement, while the orignal and new found scope is not currently achieved, it will be on a later pass through.
+                I am very happy with how it turned out in compairison to my origanl site map, and wireframes.
+                Considering this phase one was accomplished in 3 working days I believe it is an excellent show of my skill.",
             }
             ProjectCards {
-                project_name: "Project Name 2",
-                website_prop: "https://google.com",
-                github_prop: "https://google.com",
-                techs_used: vec!["Rust", "Rust", "Rust", "Rust", "Rust", "Rust", "Rust"],
-                project_des: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet risus tristique nisi euismod elementum. Duis et est sed neque pulvinar sodales sit amet non purus. Nam ut ultrices enim. Vestibulum blandit sapien dui. Aliquam sit amet ex quis lectus consectetur tempor at non arcu. Curabitur placerat justo sed nulla lobortis molestie. Sed eget justo sit amet justo lobortis tempus. Phasellus laoreet leo est, in lacinia ante aliquet ut. Etiam ultricies fermentum dolor id pretium. Sed dictum nisl id felis pulvinar varius.",
+                project_name: "UCalgary Baja Backend",
+                project_img: "https://www.svgrepo.com/show/448221/docker.svg",
+                techs_used: vec!["Python", "FastAPI", "Github Actions", "Docker", "Traefik", "Git", "Github"],
+                project_des: "This is going to be extremely cost saving for the non-profit club UCalgary Baja.
+                Using automated uploads and linting to check the Python and FastAPI code was excellent for learning how to self-host a web server.
+                This was then upgraded later with the addition of treafik so that it could be SSL certified, this is also known as supporting HTTPS transmissions.
+                Ultimately it will serve as a great stepping stone for both myself an anyone else in UCalgary Baja Software subteam. 
+                This will lead into using Actixs in the migration Soon™ to be.",
             }
             ProjectCards {
-                project_name: "Project Name 3",
-                website_prop: "https://google.com",
-                github_prop: "https://google.com",
-                techs_used: vec!["Rust", "Rust", "Rust", "Rust", "Rust", "Rust", "Rust"],
-                project_des: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet risus tristique nisi euismod elementum. Duis et est sed neque pulvinar sodales sit amet non purus. Nam ut ultrices enim. Vestibulum blandit sapien dui. Aliquam sit amet ex quis lectus consectetur tempor at non arcu. Curabitur placerat justo sed nulla lobortis molestie. Sed eget justo sit amet justo lobortis tempus. Phasellus laoreet leo est, in lacinia ante aliquet ut. Etiam ultricies fermentum dolor id pretium. Sed dictum nisl id felis pulvinar varius.",
+                project_name: "UCalgary Baja Website",
+                website_prop: "https://uofcbaja.pages.dev",
+                project_img: "https://res.cloudinary.com/dpgrgsh7g/image/upload/v1745633714/ucalgary-baja-site-April.png",
+                techs_used: vec![
+                    "HTML5",
+                    "CSS",
+                    "JavaScript",
+                    "Markdown",
+                    "YAML",
+                    "React",
+                    "Git",
+                    "Github",
+                    "Cloudflare",
+                ],
+                project_des: "The flexibility that we achieved using React,
+                rather than a locked down platform or framework has allows all the Software members of UCalgary Baja to learn infinitely more.
+                This isn't to say that it is faster or have additional perks of using 'non-code website builders'. 
+                This is provided massive opportunities to learn teach and save on cost compaired to the website builders. 
+                Overall I would say this will be worth it in the long run and opened my eyes to different website hosting providers, 
+                with their associated perks and costs.
+                When we change it, it will most likely we re-written in Vue as there is a good non-depreciated way to initalize the framework.",
             }
         }
     }
