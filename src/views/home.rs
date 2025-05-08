@@ -55,7 +55,7 @@ pub fn Home() -> Element {
                 }
                 p {
                     "I advore problem solving and building cool stuff, I'm happy to jump in and get started! "
-                    Link { to: Route::Contact {}, "Let's create something great together!" }
+                    Link { to: Route::ContactMe {}, "Let's create something great together!" }
                 }
             }
             div { class: "technologies",

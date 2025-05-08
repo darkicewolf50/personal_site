@@ -1,5 +1,5 @@
 use dioxus::prelude::*;
-use std::{collections::HashMap, rc::Rc};
+use std::rc::Rc;
 
 #[component]
 pub fn get_tech_logos_from_str(used_tech: &'static str) -> Element {

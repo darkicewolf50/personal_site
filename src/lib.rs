@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 
 // use components::Hero;
-use views::{Blog, Blogs, Contact, Home, Navbar, NewHome, Projects};
+use views::{Blog, Blogs, ContactMe, Home, Navbar, NewHome, Projects};
 
 /// Define a components module that contains all shared components for our app.
 mod components;
@@ -40,7 +40,7 @@ pub enum Route {
         Projects {},
 
         #[route("/contact")]
-        Contact {},
+        ContactMe,
 
         #[route("/new_home")]
         NewHome {},

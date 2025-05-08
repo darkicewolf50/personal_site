@@ -1,0 +1,65 @@
+#ContactMe {
+	display: flex;
+	flex-flow: row wrap;
+	column-gap: 2svw;
+	row-gap: 4svh;
+	min-height: 70svh;
+	margin-top: 4svh;
+	justify-content: space-evenly;
+}
+
+#ContactMe div {
+	display: flex;
+	flex-grow: 1;
+	background-color: var(--card-background-color);
+	border-radius: var(--card-border-radius);
+	flex-direction: column;
+	justify-content: center;
+}
+
+#ContactMe p {
+	margin: 2svh 2svw;
+	padding: 0svh 2svw;
+}
+
+#ContactMe form {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	margin: 2svh 0.5svw;
+	padding: 0svh 1svw;
+}
+
+#ContactMe input {
+	background-color: var(--card-background-color);
+	border-radius: var(--card-border-radius);
+	border-color: rgba(245, 245, 245, 0.5);
+	border-width: 2px;
+	padding: 1svh 0svw;
+	margin: 1svh 0.5svw;
+	color: inherit;
+	align-items: start;
+}
+
+#ContactMe form textarea {
+	background-color: var(--card-background-color);
+	border-radius: var(--card-border-radius);
+	border-color: rgba(245, 245, 245, 0.4);
+	border-width: 2px;
+	padding: 1svh 0svw;
+	margin: 1svh 0.5svw;
+	color: inherit;
+	align-items: start;
+	min-height: 25svh;
+}
+
+#ContactMe form button {
+	border-radius: var(--card-border-radius);
+	border-color: rgba(245, 245, 245, 0.5);
+	padding: 1svh 0svw;
+	margin: 1svh 0.5svw;
+	color: inherit;
+	align-items: start;
+	background-color: rgba(0, 128, 0, 0.6);
+	border-color: transparent;
+}

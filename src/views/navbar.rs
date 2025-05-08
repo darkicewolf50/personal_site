@@ -20,7 +20,7 @@ pub fn Navbar() -> Element {
             Link { to: Route::Home {}, "Home" }
             Link { to: Route::Projects {}, "Projects" }
             Link { to: Route::Blogs { id: 0 }, "Blogs" }
-            Link { to: Route::Contact {}, "Contact" }
+            Link { to: Route::ContactMe {}, "Contact" }
         }
 
         // The `Outlet` component is used to render the next component inside the layout. In this case, it will render either
