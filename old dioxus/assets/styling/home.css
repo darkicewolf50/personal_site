@@ -1,0 +1,53 @@
+#home-intro {
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	margin-top: 2svh;
+	background-color: var(--card-background-color);
+	border-radius: var(--card-border-radius);
+}
+
+#home-intro h1 {
+	border-bottom: var(--underlineTitle);
+	border-radius: var(--underlineTitleBorderRadius);
+	display: flex;
+	margin: 2svh 2svw;
+	padding: 0svh 2svw;
+	padding-bottom: 1svh;
+}
+
+#home-intro p {
+	margin: 1svh 4svw;
+	padding: 0svh 2svw;
+	padding-bottom: 1svh;
+}
+
+.technologies {
+	display: flex;
+	flex-direction: column;
+}
+
+.technologies-cat {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	column-gap: 1svw;
+	row-gap: 1svh;
+}
+
+#experience {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 4svh;
+	background-color: var(--card-background-color);
+	border-radius: var(--card-border-radius);
+}
+
+#experience div {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	background-color: var(--card-background-color);
+	border-radius: var(--card-border-radius);
+	margin: 4svh 0px;
+}
