@@ -22,10 +22,56 @@
 	padding: 0svh 2svw;
 }
 
+#contact-me {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	background-color: transparent;
+	border-radius: 0px;
+	margin: 2svh 0.5svw;
+	padding: 0svh 1svw;
+}
+
+#contact-me input {
+	background-color: var(--card-background-color);
+	border-radius: var(--card-border-radius);
+	border-color: rgba(245, 245, 245, 0.5);
+	border-width: 2px;
+	padding: 1svh 0svw;
+	margin: 1svh 0.5svw;
+	color: inherit;
+	align-items: start;
+}
+
+#contact-me textarea {
+	background-color: var(--card-background-color);
+	border-radius: var(--card-border-radius);
+	border-color: rgba(245, 245, 245, 0.4);
+	border-width: 2px;
+	padding: 1svh 0svw;
+	margin: 1svh 0.5svw;
+	color: inherit;
+	align-items: start;
+	min-height: 25svh;
+}
+
+#contact-me button {
+	border-radius: var(--card-border-radius);
+	border-color: rgba(245, 245, 245, 0.5);
+	padding: 1svh 0svw;
+	margin: 1svh 0.5svw;
+	color: inherit;
+	align-items: start;
+	background-color: rgba(0, 128, 0, 0.6);
+	border-color: transparent;
+}
+
 #ContactMe form {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
+	background-color: transparent;
+	border-radius: 0px;
 	margin: 2svh 0.5svw;
 	padding: 0svh 1svw;
 }
@@ -41,7 +87,7 @@
 	align-items: start;
 }
 
-#ContactMe form textarea {
+#ContactMe textarea {
 	background-color: var(--card-background-color);
 	border-radius: var(--card-border-radius);
 	border-color: rgba(245, 245, 245, 0.4);
@@ -53,7 +99,7 @@
 	min-height: 25svh;
 }
 
-#ContactMe form button {
+#ContactMe button {
 	border-radius: var(--card-border-radius);
 	border-color: rgba(245, 245, 245, 0.5);
 	padding: 1svh 0svw;

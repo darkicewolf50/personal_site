@@ -8,13 +8,15 @@ const CONTACTME_CSS: Asset = asset!("/assets/styling/contactme.css");
 
 #[component]
 pub fn ContactMe() -> Element {
-    // let mut test_form = use_signal(|| {
-    //     HashMap::from([
-    //         ("Name", "".to_string()),
-    //         ("Email", "".to_string()),
-    //         ("Message", "".to_string()),
-    //     ])
-    // });
+    let mut pre_form: Signal<HashMap<&'static str, String>> = use_signal(|| {
+        HashMap::from([
+            ("Name", "".to_string()),
+            ("Email", "".to_string()),
+            ("Message", "".to_string()),
+        ])
+    });
+
+    let mut error_box_message: Signal<String> = use_signal(|| "".to_string());
 
     rsx! {
         document::Link { rel: "stylesheet", href: CONTACTME_CSS }
@@ -27,28 +29,34 @@ pub fn ContactMe() -> Element {
                 }
             }
             div {
-                form {
-                    onsubmit: move |event| {
-                        event.prevent_default();
-                        tracing::info!("{:?}", event.data().values() ["name"]);
-                    },
+                div { id: "contact-me",
                     label { "Name" }
-                    input { name: "name" }
+                    input {
+                        oninput: move |event| {
+                            pre_form.write().insert("Name", event.value());
+                        },
+                    }
                     label { "Email" }
-                    input { name: "email", r#type: "email" }
+                    input {
+                        r#type: "email",
+                        oninput: move |event| {
+                            pre_form.write().insert("Email", event.value());
+                        },
+                    }
                     label { "Message" }
-                    textarea { name: "message" }
+                    textarea {
+                        oninput: move |event| {
+                            pre_form.write().insert("Message", event.value());
+                        },
+                    }
+                    p { "{error_box_message}" }
                     button {
                         r#type: "submit",
-                        onclick: move |_| tracing::info!("Clicked!"),
+                        onclick: move |_| tracing::info!("Clicked!\n{:?}", pre_form),
                         "Submit"
                     }
                 }
             }
-        }
-        div {
-            h3 { "Form Submission" }
-                // p { "{test_form.values().iter().map(|value| value.to_string)}" }
         }
         Contact {}
     }
