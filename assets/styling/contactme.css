@@ -15,21 +15,14 @@
 	border-radius: var(--card-border-radius);
 	flex-direction: column;
 	justify-content: center;
+	margin: 2svh 0.5svw;
+	padding: 2svh 1svw;
+	max-width: 600px;
 }
 
 #ContactMe p {
-	margin: 2svh 2svw;
-	padding: 0svh 2svw;
-}
-
-#contact-me {
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	background-color: transparent;
-	border-radius: 0px;
-	margin: 2svh 0.5svw;
-	padding: 0svh 1svw;
+	margin: 2svh 0svw;
+	padding: 0svh 0svw;
 }
 
 #contact-me input {
@@ -64,16 +57,6 @@
 	align-items: start;
 	background-color: rgba(0, 128, 0, 0.6);
 	border-color: transparent;
-}
-
-#ContactMe form {
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	background-color: transparent;
-	border-radius: 0px;
-	margin: 2svh 0.5svw;
-	padding: 0svh 1svw;
 }
 
 #ContactMe input {
