@@ -28,7 +28,6 @@ pub fn ContactMe() -> Element {
                 }
             }
             div {
-                // div { id: "contact-me",
                 label { "Name" }
                 input {
                     oninput: move |event| {
@@ -60,7 +59,6 @@ pub fn ContactMe() -> Element {
                     },
                     "Submit"
                 }
-                        // }
             }
         }
         Contact {}
