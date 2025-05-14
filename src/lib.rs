@@ -40,7 +40,7 @@ pub enum Route {
         Projects {},
 
         #[route("/contact")]
-        ContactMe,
+        ContactMe {},
 
         #[route("/new_home")]
         NewHome {},

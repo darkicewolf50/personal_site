@@ -63,6 +63,11 @@
 	filter: invert() hue-rotate(180deg);
 }
 
+.project-title-info img:hover {
+	filter: brightness(0) saturate(100%) invert(65%) sepia(13%) saturate(733%)
+		hue-rotate(187deg) brightness(95%) contrast(90%);
+}
+
 .project-title-info div {
 	display: flex;
 	gap: 1svw;

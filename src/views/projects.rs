@@ -1,14 +1,33 @@
+use std::default;
+
 use crate::helper_fun::get_tech_logos_from_str;
 use dioxus::prelude::*;
 
 #[component]
-pub fn Projects() -> Element {
+pub fn Projects(#[props(default = true)] display_title: bool) -> Element {
     rsx! {
+        if display_title {
+            title { "Brock Tomlinson - Projects" }
+        }
         div {
             h2 { "Projects" }
             p { "Top Featured and Recent Projects" }
         }
         div { class: "project-section",
+            ProjectCards {
+                project_name: "Portfolio Site Version 1.1.0",
+                website_prop: "https://darkicewolf50.github.io",
+                github_prop: "https://github.com/darkicewolf50/darkicewolf50.github.io",
+                project_img: "https://res.cloudinary.com/dpgrgsh7g/image/upload/v1745630861/Portfolio_site_k4mhmj.png",
+                techs_used: vec!["Rust", "CSS", "Dioxus", "Github Actions", "Git", "Github"],
+                project_des: "This project was a great test of my newly learned Rust.
+            This minor update added functionality for the contact me, the ground work for the blogs part of the site, as well as many minor 
+            UI consistencies to ensure that all of the buttons and links felt like buttons and links.
+            I was surprise how easy it was to set up a discord webhook using the 'reqwest' crate. 
+            As I continue on I find myself struggling with how and why to use databases for content I generate. 
+            I think using tools like disocrd webhooks and email notifications are great for users but certainly not great for reading data from. 
+            The part I am both excited for and deading is going to be the blogs component which I believe I have solved for now.",
+            }
             ProjectCards {
                 project_name: "Portfolio Site",
                 website_prop: "https://darkicewolf50.github.io",

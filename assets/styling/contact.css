@@ -88,6 +88,13 @@
 	filter: invert() hue-rotate(180deg);
 }
 
+#contact ul li a:hover {
+	cursor: pointer;
+	color: #91a4d2;
+	filter: brightness(0) saturate(100%) invert(65%) sepia(13%) saturate(733%)
+		hue-rotate(187deg) brightness(95%) contrast(90%);
+}
+
 @media only screen and (max-width: 500px) {
 	#contact ul li img {
 		display: none;

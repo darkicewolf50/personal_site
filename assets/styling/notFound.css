@@ -15,13 +15,22 @@
 	background-color: var(--card-background-color);
 	border-radius: var(--card-border-radius);
 	border: none;
-	color: #ffffff;
+	color: inherit;
 	font-size: xx-large;
 	padding: 1rem;
+}
+
+#not-found button:hover {
+	cursor: pointer;
 }
 
 #not-found a {
 	text-decoration: none;
 	background-color: var(--card-background-color);
 	border-radius: var(--card-border-radius);
+	color: inherit;
+}
+
+#not-found a:hover {
+	color: #91a4d2;
 }

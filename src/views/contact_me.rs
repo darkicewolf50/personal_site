@@ -97,7 +97,7 @@ async fn send_message(name: String, email: String, message: String, mut recived:
                 .await;
     match res {
         Ok(_) => {
-            recived.set("Sent Sucessfully".to_string());
+            recived.set("Sent Sucessfully, I will be in contact with you soon".to_string());
         }
         Err(_) => {
             recived.set("An Error Occured".to_string());

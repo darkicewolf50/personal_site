@@ -1,6 +1,6 @@
 use crate::Route;
 use dioxus::{logger::tracing, prelude::*};
-use reqwest::{Client, Response};
+use reqwest;
 
 const BLOG_CSS: Asset = asset!("/assets/styling/blog.css");
 
