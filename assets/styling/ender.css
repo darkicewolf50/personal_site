@@ -21,16 +21,17 @@ footer img {
 	filter: invert() hue-rotate(180deg);
 }
 
-footer img:hover {
-	cursor: pointer;
-	filter: brightness(0) saturate(100%) invert(65%) sepia(13%) saturate(733%)
-		hue-rotate(187deg) brightness(95%) contrast(90%);
-}
-
 footer a {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	text-decoration: none;
 	color: inherit;
+}
+
+footer a:hover {
+	color: #91a4d2;
+	cursor: pointer;
+	filter: brightness(0) saturate(100%) invert(65%) sepia(13%) saturate(733%)
+		hue-rotate(187deg) brightness(95%) contrast(90%);
 }

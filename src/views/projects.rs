@@ -14,10 +14,10 @@ pub fn Projects(#[props(default = true)] display_title: bool) -> Element {
         div { class: "project-section",
             ProjectCards {
                 project_name: "Portfolio Site Version 1.1.0",
-                website_prop: "https://darkicewolf50.pages.dev",
-                github_prop: "https://gitea.bajacloud.duckdns.org/darkicewolf50/personal_site",
+                website_link: "https://darkicewolf50.pages.dev",
+                gitea_link: "https://gitea.bajacloud.duckdns.org/darkicewolf50/personal_site",
                 project_img: "https://res.cloudinary.com/dpgrgsh7g/image/upload/v1745630861/Portfolio_site_k4mhmj.png",
-                techs_used: vec!["Rust", "CSS", "Dioxus", "Github Actions", "Git", "Github"],
+                techs_used: vec!["Rust", "CSS", "Dioxus", "Git", "Gitea"],
                 project_des: "This project was a great test of my newly learned Rust.
             This minor update added functionality for the contact me, the ground work for the blogs part of the site, as well as many minor 
             UI consistencies to ensure that all of the buttons and links felt like buttons and links.
@@ -28,10 +28,10 @@ pub fn Projects(#[props(default = true)] display_title: bool) -> Element {
             }
             ProjectCards {
                 project_name: "Portfolio Site",
-                website_prop: "https://darkicewolf50.github.io",
-                github_prop: "https://github.com/darkicewolf50/darkicewolf50.github.io",
+                website_link: "https://darkicewolf50.github.io",
+                github_link: "https://github.com/darkicewolf50/darkicewolf50.github.io",
                 project_img: "https://res.cloudinary.com/dpgrgsh7g/image/upload/v1745630861/Portfolio_site_k4mhmj.png",
-                techs_used: vec!["Rust", "CSS", "Dioxus", "Github Actions", "Git", "Github"],
+                techs_used: vec!["Rust", "CSS", "Dioxus", "Git", "Github"],
                 project_des: "This project was a great test of my newly learned Rust.
                 It was certainly interesting to go through all of the stages of front end web developement, while the orignal and new found scope is not currently achieved, it will be on a later pass through.
                 I am very happy with how it turned out in compairison to my origanl site map, and wireframes.
@@ -49,7 +49,7 @@ pub fn Projects(#[props(default = true)] display_title: bool) -> Element {
             }
             ProjectCards {
                 project_name: "UCalgary Baja Website",
-                website_prop: "https://uofcbaja.pages.dev",
+                website_link: "https://uofcbaja.pages.dev",
                 project_img: "https://res.cloudinary.com/dpgrgsh7g/image/upload/v1745633714/ucalgary-baja-site-April.png",
                 techs_used: vec![
                     "HTML5",
@@ -78,8 +78,9 @@ const PROJECT_CARDS_CSS: Asset = asset!("/assets/styling/projectCards.css");
 
 #[component]
 pub fn ProjectCards(
-    website_prop: Option<&'static str>,
-    github_prop: Option<&'static str>,
+    website_link: Option<&'static str>,
+    github_link: Option<&'static str>,
+    gitea_link: Option<&'static str>,
     project_name: &'static str,
     techs_used: Vec<&'static str>,
     project_des: &'static str,
@@ -95,12 +96,17 @@ pub fn ProjectCards(
             div { class: "project-title-info",
                 h3 { "{project_name}" }
                 div {
-                    if let Some(github_site) = github_prop {
+                    if let Some(github_site) = github_link {
                         a { href: "{github_site}",
                             get_tech_logos_from_str { used_tech: "Github" }
                         }
                     }
-                    if let Some(site) = website_prop {
+                    if let Some(gitea_site) = gitea_link {
+                        a { href: "{gitea_site}", id: "gitea",
+                            get_tech_logos_from_str { used_tech: "Gitea" }
+                        }
+                    }
+                    if let Some(site) = website_link {
                         a { href: "{site}",
                             get_tech_logos_from_str { used_tech: "Internet" }
                         }
