@@ -19,7 +19,7 @@ pub fn Navbar() -> Element {
         div { id: "navbar",
             Link { to: Route::Home {}, "Home" }
             Link { to: Route::Projects {}, "Projects" }
-            Link { to: Route::Blogs { id: 0 }, "Blogs" }
+            Link { to: Route::Blogs { page_num: 0 }, "Blogs" }
             Link { to: Route::ContactMe {}, "Contact" }
         }
 

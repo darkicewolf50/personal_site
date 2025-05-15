@@ -1,6 +1,9 @@
+use std::thread::Scope;
+
 use crate::Route;
-use dioxus::{logger::tracing, prelude::*};
+use dioxus::{html::script::r#async, logger::tracing, prelude::*};
 use reqwest;
+use serde::{Deserialize, Serialize};
 
 const BLOG_CSS: Asset = asset!("/assets/styling/blog.css");
 
@@ -40,8 +43,7 @@ pub fn Blog(blog_title: String) -> Element {
             //     "Previous"
             // }
             // span { " <---> " }
-            // Link { to: Route::Blog { id: id + 1 }, "Next" }
-            Link { to: Route::Blogs { id: 0 }, "Go Back" }
+            Link { to: Route::Blogs { page_num: 0 }, "Go Back" }
             div { dangerous_inner_html: blog_content }
         }
     }
@@ -58,21 +60,92 @@ async fn get_blog(blog_name: String) {
 }
 
 #[component]
-pub fn Blogs(id: i32) -> Element {
+pub fn Blogs(page_num: u32) -> Element {
+    let mut _num_limit: Signal<u8> = use_signal(|| 10);
+
+    let blogs_resource: Resource<Vec<BlogPreview>> =
+        use_resource(move || async move { get_blogs_preview(_num_limit(), page_num).await });
+
     rsx! {
         document::Link { rel: "stylesheet", href: BLOG_CSS }
         div { id: "blogs",
-            h1 { "Page Under Development" }
-            p { "Please Try Again Later" }
+            title { "Blogs" }
+            h1 { "Blogs" }
+            p {
+                "This is a collection of blog posts, ranging from tutorials, technologies I found interesting, and opinion pieces"
+            }
             Link { to: Route::Home {},
                 button { "Home" }
             }
-                // Link {
-        //     to: Route::Blog {
-        //         blog_title: "Test_Blog".to_string(),
-        //     },
-        //     button { "To Test Blog" }
-        // }
+            // Link {
+            //     to: Route::Blog {
+            //         blog_title: "Test_Blog".to_string(),
+            //     },
+            //     button { "To Test Blog" }
+            // }
+            div {
+                if let Some(blogs) = &*blogs_resource.read() {
+                    for blog in blogs.iter() {
+
+                        Link {
+                            to: Route::Blog {
+                                blog_title: blog.blog_file_name.clone(),
+                            },
+                            div { dangerous_inner_html: blog.html_preview.as_str() }
+                        }
+                    }
+                } else {
+                    div { "Loading blogs..." }
+                }
+            }
+            div {
+                Link {
+                    to: Route::Blogs {
+                        page_num: page_num + 1,
+                    },
+                    "Next"
+                }
+                if page_num > 0 {
+                    Link {
+                        to: Route::Blogs {
+                            page_num: page_num - 1,
+                        },
+                        "Go Back"
+                    }
+                }
+            }
         }
     }
+}
+
+#[derive(Deserialize, Serialize, Debug)]
+struct BlogPreview {
+    pub blog_file_name: String,
+    pub date_last_edit: String,
+    pub html_preview: String,
+}
+
+async fn get_blogs_preview(_num_limit: u8, page_num: u32) -> Vec<BlogPreview> {
+    let res = reqwest::get(format!(
+        "http://localhost:8000/blogs/{}/{}",
+        _num_limit, page_num
+    ))
+    .await
+    .unwrap()
+    .text()
+    .await
+    .unwrap_or("".to_string());
+
+    let json: serde_json::Value = serde_json::from_str(&res).unwrap();
+
+    // Extract the "Blogs" array and deserialize it into Vec<BlogPreview>
+    let blogs: Vec<BlogPreview> = serde_json::from_value(
+        json.get("Blogs")
+            .cloned()
+            .unwrap_or(serde_json::Value::Null),
+    )
+    .unwrap_or_default();
+
+    // tracing::info!("{:?}", blogs);
+    blogs
 }

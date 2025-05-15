@@ -76,7 +76,7 @@ pub fn Home() -> Element {
                 }
             }
             Contact {}
-            Projects { display_title: false }
+            Projects { independent_page: false }
             div { id: "experience",
                 h2 { "Experience" }
                 div {

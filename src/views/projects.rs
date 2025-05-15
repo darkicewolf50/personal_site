@@ -2,9 +2,9 @@ use crate::helper_fun::get_tech_logos_from_str;
 use dioxus::prelude::*;
 
 #[component]
-pub fn Projects(#[props(default = true)] display_title: bool) -> Element {
+pub fn Projects(#[props(default = true)] independent_page: bool) -> Element {
     rsx! {
-        if display_title {
+        if independent_page {
             title { "Brock Tomlinson - Projects" }
         }
         div {
