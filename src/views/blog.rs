@@ -47,7 +47,7 @@ pub fn Blog(blog_title: String) -> Element {
     }
 }
 
-async fn getBlog(blog_name: String) {
+async fn get_blog(blog_name: String) {
     let res = reqwest::get("https://www.rust-lang.org")
         .await
         .unwrap()

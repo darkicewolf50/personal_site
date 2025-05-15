@@ -1,5 +1,3 @@
-use std::default;
-
 use crate::helper_fun::get_tech_logos_from_str;
 use dioxus::prelude::*;
 
@@ -16,8 +14,8 @@ pub fn Projects(#[props(default = true)] display_title: bool) -> Element {
         div { class: "project-section",
             ProjectCards {
                 project_name: "Portfolio Site Version 1.1.0",
-                website_prop: "https://darkicewolf50.github.io",
-                github_prop: "https://github.com/darkicewolf50/darkicewolf50.github.io",
+                website_prop: "https://darkicewolf50.pages.dev",
+                github_prop: "https://gitea.bajacloud.duckdns.org/darkicewolf50/personal_site",
                 project_img: "https://res.cloudinary.com/dpgrgsh7g/image/upload/v1745630861/Portfolio_site_k4mhmj.png",
                 techs_used: vec!["Rust", "CSS", "Dioxus", "Github Actions", "Git", "Github"],
                 project_des: "This project was a great test of my newly learned Rust.
