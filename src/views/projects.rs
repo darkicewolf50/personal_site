@@ -5,7 +5,7 @@ use dioxus::prelude::*;
 pub fn Projects(#[props(default = true)] independent_page: bool) -> Element {
     rsx! {
         if independent_page {
-            title { "Brock Tomlinson - Projects" }
+            document::Title { "Brock Tomlinson - Projects" }
         }
         div {
             h2 { "Projects" }
@@ -74,8 +74,6 @@ pub fn Projects(#[props(default = true)] independent_page: bool) -> Element {
     }
 }
 
-const PROJECT_CARDS_CSS: Asset = asset!("/assets/styling/projectCards.css");
-
 #[component]
 pub fn ProjectCards(
     website_link: Option<&'static str>,
@@ -87,7 +85,7 @@ pub fn ProjectCards(
     #[props(default = "https://picsum.photos/200")] project_img: &'static str,
 ) -> Element {
     rsx! {
-        document::Link { href: PROJECT_CARDS_CSS, rel: "stylesheet" }
+        document::Stylesheet { href: asset!("/assets/styling/projectCards.css") }
         div { class: "project-card",
             img {
                 src: "{project_img}",

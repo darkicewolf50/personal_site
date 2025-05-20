@@ -1,19 +1,18 @@
 use dioxus::prelude::*;
 
 const PROFESSIONAL_PHOTO_JPG: Asset = asset!("assets/professional_photo_2023.jpg");
-const CONTACT_CSS: Asset = asset!("/assets/styling/contact.css");
 
 #[component]
 pub fn Contact() -> Element {
     rsx! {
-        document::Link { href: CONTACT_CSS, rel: "stylesheet" }
+        document::Stylesheet { href: asset!("/assets/styling/contact.css") }
         h2 { "Contact" }
         div { id: "contact",
             div {
                 div {
                     img {
                         src: PROFESSIONAL_PHOTO_JPG,
-                        alt: "Borck's professional photo",
+                        alt: "Brock's professional photo",
                     }
                 }
             }

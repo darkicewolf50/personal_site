@@ -1,6 +1,4 @@
-use dioxus::prelude::*;
-
-const EXPERIENCE_CSS: Asset = asset!("/assets/styling/experience.css");
+use dioxus::{document, prelude::*};
 
 #[component]
 pub fn Experience(professional_jobs: bool) -> Element {
@@ -10,7 +8,7 @@ pub fn Experience(professional_jobs: bool) -> Element {
     };
     rsx! {
         div { class: "experience-comp",
-            document::Link { rel: "stylesheet", href: EXPERIENCE_CSS }
+            document::Stylesheet { href: asset!("/assets/styling/experience.css") }
             if professional_jobs {
                 h3 { "Professional" }
             } else {
@@ -32,7 +30,6 @@ pub fn Experience(professional_jobs: bool) -> Element {
                             td { "{exp.start_month} - {exp.end_month}" }
                         }
                         tr {
-                            // td { "" }
                             td { "{exp.company}" }
                             td { "{exp.location}" }
                         }

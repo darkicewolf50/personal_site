@@ -2,9 +2,6 @@ use crate::components::Ender;
 use crate::Route;
 use dioxus::prelude::*;
 
-const NAVBAR_CSS: Asset = asset!("/assets/styling/navbar.css");
-const STD_COLOUR_AND_FONTS_CSS: Asset = asset!("assets/styling/standardColoursandFonts.css");
-
 /// The Navbar component that will be rendered on all pages of our app since every page is under the layout.
 ///
 ///
@@ -13,8 +10,8 @@ const STD_COLOUR_AND_FONTS_CSS: Asset = asset!("assets/styling/standardColoursan
 #[component]
 pub fn Navbar() -> Element {
     rsx! {
-        document::Link { rel: "stylesheet", href: NAVBAR_CSS }
-        document::Link { rel: "stylesheet", href: STD_COLOUR_AND_FONTS_CSS }
+        document::Stylesheet { href: asset!("/assets/styling/navbar.css") }
+        document::Stylesheet { href: asset!("assets/styling/standardColoursandFonts.css") }
 
         div { id: "navbar",
             Link { to: Route::Home {}, "Home" }

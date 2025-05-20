@@ -796,6 +796,7 @@ dependencies = [
  "dioxus-signals",
  "dioxus-web",
  "manganis",
+ "serde",
  "warnings",
 ]
 

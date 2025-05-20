@@ -7,30 +7,122 @@
 	margin-top: 50px;
 }
 
+#blog a:hover {
+	color: #91a4d2;
+}
+
 #blogs {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 80svh;
+	min-height: 80svh;
 }
 
 #blogs h1 {
 	border-bottom: var(--underlineTitle);
 	border-radius: var(--underlineTitleBorderRadius);
+	margin: 1svh 2svw;
+	padding: 1svh 2svw;
+	display: flex;
 }
 
 #blogs button {
+	/* background-color: transparent; */
 	background-color: var(--card-background-color);
 	border-radius: var(--card-border-radius);
 	border: none;
-	color: #ffffff;
-	font-size: xx-large;
-	padding: 1rem;
+	color: inherit;
+	font-size: x-large;
+	padding: 0.5rem;
+	margin: 1svh 0svw;
+}
+
+#blogs p {
+	margin: 0px;
+	padding: 0px;
 }
 
 #blogs a {
 	text-decoration: none;
+	color: inherit;
+}
+
+#blogs a:hover {
+	color: #91a4d2;
+}
+
+#blogs-title {
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 1svh;
+}
+
+#blogs-title p {
+	margin: 0svh 1svw;
+	padding: 1svh 0svw;
+}
+
+#blog-loading {
+	display: flex;
+	flex-direction: column;
+	justify-self: center;
+	align-self: center;
+	justify-content: center;
+	align-items: center;
+
 	background-color: var(--card-background-color);
 	border-radius: var(--card-border-radius);
+	padding: 2svh 2svw;
+	margin: 8svh 0svw;
+}
+
+#blog-out-of {
+	display: flex;
+	flex-direction: column;
+	justify-self: center;
+	align-self: center;
+	justify-content: center;
+	align-items: center;
+
+	background-color: var(--card-background-color);
+	border-radius: var(--card-border-radius);
+	padding: 2svh 2svw;
+	margin: 8svh 0svw;
+}
+
+#blog-nav {
+	display: flex;
+	align-items: center;
+	position: relative;
+
+	padding: 0svh 2svw;
+	margin-top: auto;
+	margin-bottom: 2svh;
+
+	background-color: var(--card-background-color);
+	border-radius: var(--card-border-radius);
+}
+
+#blog-nav a:last-child {
+	margin-left: auto;
+}
+
+#blog-nav div {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	justify-self: center;
+
+	margin: 1svh 0svw;
+	padding: 0.5rem;
+	column-gap: 1svw;
+	min-height: 28px;
+	font-size: large;
+
+	background-color: var(--card-background-color);
+	border-radius: var(--card-border-radius);
+
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
 }

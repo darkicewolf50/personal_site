@@ -3,8 +3,6 @@ use crate::views::{Contact, Projects};
 use crate::Route;
 use dioxus::prelude::*;
 
-const HOME_CSS: Asset = asset!("/assets/styling/home.css");
-
 #[component]
 pub fn Home() -> Element {
     let languages = vec![
@@ -32,8 +30,8 @@ pub fn Home() -> Element {
     ];
     let platforms = vec!["AWS", "Cloudflare", "Vercel", "Netlify", "Gitea", "Github"];
     rsx!(
-        document::Link { rel: "stylesheet", href: HOME_CSS }
-        title { "Brock Tomlinson" }
+        document::Title { "Brock Tomlinson - Home" }
+        document::Stylesheet { href: asset!("/assets/styling/home.css") }
         div {
             div { id: "home-intro",
                 h1 { "Hi I'm Brock" }

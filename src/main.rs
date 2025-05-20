@@ -7,7 +7,7 @@ use personal_site::Route;
 // The macro returns an `Asset` type that will display as the path to the asset in the browser or a local path in desktop bundles.
 const FAVICON: Asset = asset!("/assets/favicon.ico");
 // The asset macro also minifies some assets like CSS and JS to make bundled smaller
-const MAIN_CSS: Asset = asset!("/assets/styling/main.css");
+// const MAIN_CSS: Asset = asset!("/assets/styling/main.css");
 
 fn main() {
     // The `launch` function is the main entry point for a dioxus app. It takes a component and renders it with the platform feature
@@ -26,10 +26,34 @@ fn App() -> Element {
         // In addition to element and text (which we will see later), rsx can contain other components. In this case,
         // we are using the `document::Link` component to add a link to our favicon and main CSS file into the head of our app.
         document::Link { rel: "icon", href: FAVICON }
-        document::Link { rel: "stylesheet", href: MAIN_CSS }
+        // document::Link { rel: "stylesheet", href: MAIN_CSS }
+        document::Stylesheet { href: asset!("/assets/styling/main.css") }
 
         // The router component renders the route enum we defined above. It will handle synchronization of the URL and render
         // the layouts and components for the active route.
         Router::<Route> {}
     }
+}
+
+#[cfg(feature = "ssg")]
+fn main() {
+    use dioxus_fullstack::{incremental::IncrementalRendererConfig, prelude::*};
+
+    LaunchBuilder::new()
+        .with_cfg(
+            ServeConfig::builder()
+                .incremental(
+                    IncrementalRendererConfig::new()
+                        .static_dir(
+                            std::env::current_exe()
+                                .unwrap()
+                                .parent()
+                                .unwrap()
+                                .join("public"),
+                        )
+                        .clear_cache(false),
+                )
+                .enable_out_of_order_streaming(),
+        )
+        .launch(app);
 }

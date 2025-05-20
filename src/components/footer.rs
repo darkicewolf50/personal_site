@@ -3,8 +3,6 @@ use std::collections::HashMap;
 use crate::helper_fun::{tech_table_lookup, TechDes};
 use dioxus::prelude::*;
 
-const ENDER_CSS: Asset = asset!("/assets/styling/ender.css");
-
 #[component]
 pub fn Ender() -> Element {
     // gets list of items to get
@@ -16,7 +14,7 @@ pub fn Ender() -> Element {
         footer_info.insert(used_tech_item, *tech_table_lookup(used_tech_item));
     }
     rsx! {
-        document::Link { rel: "stylesheet", href: ENDER_CSS }
+        document::Stylesheet { href: asset!("/assets/styling/ender.css") }
         footer {
             p { "Brock Tomlinson © 2025" }
             div {

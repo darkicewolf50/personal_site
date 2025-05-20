@@ -6,8 +6,6 @@ use dioxus::prelude::*;
 
 use crate::views::Contact;
 
-const CONTACTME_CSS: Asset = asset!("/assets/styling/contactme.css");
-
 #[component]
 pub fn ContactMe() -> Element {
     let mut contact_me_name = use_signal(|| String::new());
@@ -17,8 +15,8 @@ pub fn ContactMe() -> Element {
     let mut _error_box_message = use_signal(|| String::new());
 
     rsx! {
-        document::Link { rel: "stylesheet", href: CONTACTME_CSS }
-        title { "Brock Tomlinson - Contact" }
+        document::Stylesheet { href: asset!("/assets/styling/contactme.css") }
+        document::Title { "Brock Tomlinson - Contact" }
         div { id: "ContactMe",
             div {
                 h2 { "Get in Touch" }

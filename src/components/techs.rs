@@ -1,8 +1,6 @@
 use crate::helper_fun::tech_table_lookup;
 use dioxus::prelude::*;
 
-const TECHS_CSS: Asset = asset!("/assets/styling/techs.css");
-
 #[component]
 pub fn TechCard(tech_props: &'static str) -> Element {
     let props_tech = tech_table_lookup(tech_props);
@@ -19,14 +17,12 @@ pub fn TechCard(tech_props: &'static str) -> Element {
 #[component]
 pub fn TechCat(cat: &'static str, tech_vec: Vec<&'static str>) -> Element {
     rsx! {
-        document::Link { rel: "stylesheet", href: TECHS_CSS }
+        document::Stylesheet { href: asset!("/assets/styling/techs.css") }
         div { class: "tech-cat",
             h3 { "{cat}" }
             div { class: "tech-row",
                 for tech in tech_vec {
-                    TechCard {
-                        tech_props: tech,
-                    }
+                    TechCard { tech_props: tech }
                 }
             }
         }
