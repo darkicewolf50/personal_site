@@ -1,4 +1,4 @@
-use crate::helper_fun::get_tech_logos_from_str;
+use crate::helper_fun::{get_tech_logos_from_str, set_meta_tags};
 use dioxus::prelude::*;
 
 #[component]
@@ -6,6 +6,10 @@ pub fn Projects(#[props(default = true)] independent_page: bool) -> Element {
     rsx! {
         if independent_page {
             document::Title { "Brock Tomlinson - Projects" }
+            set_meta_tags {
+                description: "Top Featured and Recent Projects",
+                keywords: "projects Rust CSS HTML JavaScript Dioxus Gitea Git software engineer",
+            }
         }
         div {
             h2 { "Projects" }

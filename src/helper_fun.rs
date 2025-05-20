@@ -9,6 +9,15 @@ pub fn get_tech_logos_from_str(used_tech: &'static str) -> Element {
     }
 }
 
+#[component]
+pub fn set_meta_tags(description: &'static str, keywords: &'static str) -> Element {
+    rsx! {
+        document::Meta { name: "description", content: description }
+        document::Meta { name: "keywords", content: keywords }
+        document::Meta { name: "author", content: "Brock Tomlinson" }
+    }
+}
+
 #[derive(PartialEq, Props, Clone, Copy)]
 pub struct TechDes {
     pub tech_name: &'static str,

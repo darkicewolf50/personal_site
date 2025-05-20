@@ -1,5 +1,6 @@
 use dioxus::prelude::*;
 
+pub use helper_fun::set_meta_tags;
 // use components::Hero;
 use views::{Blog, Blogs, ContactMe, Home, Navbar, NewHome, Projects};
 
@@ -53,6 +54,8 @@ pub enum Route {
 fn PageNotFound(route: Vec<String>) -> Element {
     rsx! {
         document::Stylesheet { href: asset!("/assets/styling/notFound.css") }
+        document::Title { "Brock Tomlinson - Not Found" }
+        set_meta_tags { description: "This is not a valid page", keywords: "404 Nothing" }
         div { id: "not-found",
             h1 { "Page not found" }
             p { "We are terribly sorry, but the page you requested doesn't exist." }

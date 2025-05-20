@@ -1,4 +1,4 @@
-use crate::Route;
+use crate::{set_meta_tags, Route};
 use dioxus::{logger::tracing, prelude::*};
 use reqwest;
 use serde::{Deserialize, Serialize};
@@ -93,6 +93,10 @@ pub fn Blogs(page_num: u32) -> Element {
         document::Stylesheet { href: asset!("/assets/styling/blog.css") }
         div { id: "blogs",
             document::Title { "Brock Tomlinson - Blogs" }
+            set_meta_tags {
+                description: "This is a collection of blog posts, ranging from tutorials, technologies I found interesting, and opinion pieces",
+                keywords: "blogs blog software engineer webdev",
+            }
             div { id: "blogs-title",
                 h1 { "Blogs" }
                 p {

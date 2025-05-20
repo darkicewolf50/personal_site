@@ -1,4 +1,5 @@
 use crate::components::{Experience, TechCat};
+use crate::helper_fun::set_meta_tags;
 use crate::views::{Contact, Projects};
 use crate::Route;
 use dioxus::prelude::*;
@@ -32,6 +33,13 @@ pub fn Home() -> Element {
     rsx!(
         document::Title { "Brock Tomlinson - Home" }
         document::Stylesheet { href: asset!("/assets/styling/home.css") }
+        set_meta_tags {
+            description: "a fourth year Software Engineering Student specializing in full-stack development with a strong focus on backend technologies.
+                I am developing the language of how to design, develop, and create programs that are to industry standards and reasonably efficent. 
+                I bring the lessons learned from each project I have completed, 
+                learning from the mistakes I have made and bringing improved versions forward into the next project.",
+            keywords: "dev webdev Rust rust-lang software engineer",
+        }
         div {
             div { id: "home-intro",
                 h1 { "Hi I'm Brock" }
