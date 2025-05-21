@@ -37,10 +37,7 @@ pub fn Blog(blog_title: String) -> Element {
     rsx! {
         document::Stylesheet { href: asset!("/assets/styling/blog.css") }
         document::Title { "Brock Tomlinson - {blog_title}" }
-        set_meta_tags {
-            description: "{blog_title}",
-            keywords: "blog software engineer webdev {blog_title}",
-        }
+        document::Meta { name: "author", content: "Brock Tomlinson" }
         div { id: "blog",
 
             // Content
