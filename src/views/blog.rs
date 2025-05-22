@@ -132,6 +132,7 @@ pub fn Blogs(page_num: u32) -> Element {
                 .await
                 .unwrap_or_else(|_| vec![])
         }));
+
     rsx! {
         document::Stylesheet { href: asset!("/assets/styling/blog.css") }
         div { id: "blogs",
