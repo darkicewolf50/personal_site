@@ -1,5 +1,6 @@
 use crate::{set_meta_tags, Route};
-use dioxus::{logger::tracing, prelude::*};
+// use dioxus::logger::tracing::info;
+use dioxus::prelude::*;
 use reqwest;
 use serde::{Deserialize, Serialize};
 
@@ -125,12 +126,12 @@ async fn get_blog(blog_name: String) -> Result<BlogContent, reqwest::Error> {
 pub fn Blogs(page_num: u32) -> Element {
     let mut _num_limit: Signal<u8> = use_signal(|| 10);
 
-    let blogs_resource: Resource<Vec<BlogContent>> = use_resource(move || async move {
-        get_blogs_preview(_num_limit(), page_num)
-            .await
-            .unwrap_or_else(|_| vec![])
-    });
-
+    let blogs_resource: Resource<Vec<BlogContent>> =
+        use_resource(use_reactive!(|(_num_limit, page_num)| async move {
+            get_blogs_preview(_num_limit(), page_num)
+                .await
+                .unwrap_or_else(|_| vec![])
+        }));
     rsx! {
         document::Stylesheet { href: asset!("/assets/styling/blog.css") }
         div { id: "blogs",
@@ -146,16 +147,17 @@ pub fn Blogs(page_num: u32) -> Element {
                 }
                 p { "These blogs are my opinion and mine alone" }
             }
-            div {
+            div { id: "blogs-on-show",
                 if let Some(blogs) = &*blogs_resource.read() {
                     if blogs.len() > 0 {
                         for blog in blogs.iter() {
 
                             Link {
+                                class: "blog-preview",
                                 to: Route::Blog {
                                     blog_title: blog.blog_file_name.clone(),
                                 },
-                                div { dangerous_inner_html: blog.html_blog_content.as_str(),
+                                div { id: "blog_info",
                                     h1 { "{blog.blog_title}" }
                                     div {
                                         div {
@@ -163,10 +165,14 @@ pub fn Blogs(page_num: u32) -> Element {
                                                 p { "{tag}" }
                                             }
                                         }
-                                        // p { "{blog.tags}" }
-                                        p { "{blog.date_last_edit}" }
+                                        p { "{&blog.date_last_edit}" }
                                     }
                                 }
+                                div {
+                                    id: "blog_content",
+                                    dangerous_inner_html: *&blog.html_blog_content.as_str(),
+                                }
+                                button { "Read More Here" }
                             }
                         }
                     } else {
@@ -196,7 +202,6 @@ pub fn Blogs(page_num: u32) -> Element {
                     label { "display: " }
                     select {
                         onchange: move |event| {
-                            tracing::info!("Change happened {:?}", event.value());
                             _num_limit.set(event.value().parse::<u8>().unwrap_or(10));
                         },
                         option { "10" }
@@ -232,7 +237,7 @@ async fn get_blogs_preview(
 ) -> Result<Vec<BlogContent>, reqwest::Error> {
     let client = reqwest::Client::new();
 
-    let res: String = client
+    let res = client
         .get(format!(
             "http://localhost:8000/blogs/{}/{}",
             _num_limit, page_num
@@ -240,18 +245,18 @@ async fn get_blogs_preview(
         .timeout(std::time::Duration::from_secs(10))
         .send()
         .await?
-        .text()
+        .json::<Vec<BlogContent>>()
+        // .text()
         .await?;
+    Ok(res)
+    // let json: serde_json::Value = serde_json::from_str(&res).unwrap();
+    // let blogs: Vec<BlogContent> = serde_json::from_value(json).unwrap_or_default();
 
-    let json: serde_json::Value = serde_json::from_str(&res).unwrap();
-
-    // Extract the "Blogs" array and deserialize it into Vec<BlogContent>
-    let blogs: Vec<BlogContent> = serde_json::from_value(
-        json.get("Blogs")
-            .cloned()
-            .unwrap_or(serde_json::Value::Null),
-    )
-    .unwrap_or_default();
-
-    Ok(blogs)
+    // // Extract the "Blogs" array and deserialize it into Vec<BlogContent>
+    // let blogs: Vec<BlogContent> = serde_json::from_value(
+    //     json.get("Blogs")
+    //         .cloned()
+    //         .unwrap_or(serde_json::Value::Null),
+    // )
+    // .unwrap_or_default();
 }
