@@ -11,33 +11,27 @@ use serde::{Deserialize, Serialize};
 /// re-run and the rendered HTML will be updated.
 #[component]
 pub fn Blog(blog_title: String) -> Element {
-    let blog_content = use_signal(move || {
-        "<h1>This is a blog #blog_title</h1><p>
-            In blog #{blog_title}, we show how the Dioxus router works and 
-            how URL parameters can be passed as props to our route components.
-        </p>"
-            .to_string()
+    let blog_resource = use_resource({
+        let title = blog_title.clone();
+        move || {
+            let value = title.clone();
+            async move {
+                get_blog(value).await.unwrap_or(BlogContent {
+                    blog_file_name: String::new(),
+                    date_last_edit: "9999-12-01".to_string(),
+                    blog_title: "Not Found".to_string(),
+                    tags: vec!["#error".to_string()],
+                    html_blog_content: "<p>Blog not found</p>".to_string(),
+                })
+            }
+        }
     });
-    // let blog_content = use_signal(move || BlogContent {
-    //     blog_file_name: "blog_title".to_string(),
-    //     blog_title: "This is a blog #blog_title".to_string(),
-    //     date_last_edit: "2025-5-20".to_string(),
-    //     tags: "#test".to_string(),
-    //     html_blog_content: "<p>
-    //         In blog #{blog_title}, we show how the Dioxus router works and
-    //         how URL parameters can be passed as props to our route components.
-    //     </p>"
-    //         .to_string(),
-    // });
-    let blog = blog_content();
-
-    // let last_edit = &blog.date_last_edit;
-    // let tag = &blog.tags;
 
     rsx! {
         document::Stylesheet { href: asset!("/assets/styling/blog.css") }
-        document::Title { "Brock Tomlinson - {blog_title}" }
+        document::Title { "Brock Tomlinson - {blog_title.clone()}" }
         document::Meta { name: "author", content: "Brock Tomlinson" }
+
         div { id: "blog",
 
             // Content
@@ -58,26 +52,73 @@ pub fn Blog(blog_title: String) -> Element {
             // }
             // span { " <---> " }
             Link { to: Route::Blogs { page_num: 0 }, "Go Back" }
-            // div { dangerous_inner_html: *&blog.html_blog_content.as_str(),
-            //     h1 { "{blog_title}" }
-            //     div {
-            //         p { "{&blog.tags}" }
-            //         p { "{&blog.date_last_edit}" }
-            //     }
-            // }
-            div { dangerous_inner_html: blog_content }
+            if let Some(blog_content) = &*blog_resource.read() {
+                document::Meta { name: "description", content: "{blog_content.blog_title}" }
+                document::Meta {
+                    name: "keywords",
+                    content: "webdev software engineer fullstack",
+                }
+                div { id: "blog_info",
+                    h1 { "{blog_content.blog_title}" }
+                    div {
+                        div {
+                            for tag in &blog_content.tags {
+                                p { "{tag}" }
+                            }
+                        }
+                        p { "{&blog_content.date_last_edit}" }
+                    }
+                }
+                div {
+                    id: "blog_content",
+                    dangerous_inner_html: *&blog_content.html_blog_content.as_str(),
+                }
+            } else {
+                p { "Loading..." }
+            }
         }
     }
 }
 
-async fn get_blog(blog_name: String) {
-    let res = reqwest::get("https://www.rust-lang.org")
-        .await
-        .unwrap()
-        .text()
-        .await
-        .unwrap_or("".to_string());
-    tracing::info!("{}", res);
+async fn get_blog(blog_name: String) -> Result<BlogContent, reqwest::Error> {
+    let client = reqwest::Client::new();
+
+    let res = client
+        .get(format!("http://localhost:8000/blogs/blog/{}", blog_name))
+        .timeout(std::time::Duration::from_secs(10))
+        .send()
+        .await?
+        .json::<BlogContent>()
+        // .text()
+        .await?;
+
+    // tracing::info!("{:?}", res);
+    Ok(res)
+
+    // to be removed
+    // let blog = serde_json::from_str(&res).unwrap_or(BlogContent {
+    //     blog_file_name: "blog_title".to_string(),
+    //     blog_title: "This is a blog #blog_title".to_string(),
+    //     date_last_edit: "2025-5-20".to_string(),
+    //     tags: "#test".to_string(),
+    //     html_blog_content: "<p>
+    //                 In blog #{blog_title}, we show how the Dioxus router works and
+    //                 how URL parameters can be passed as props to our route components.
+    //             </p>"
+    //         .to_string(),
+    // });
+    // Ok(blog)
+    // Ok(BlogContent {
+    //     blog_file_name: "blog_title".to_string(),
+    //     blog_title: "This is a blog #blog_title".to_string(),
+    //     date_last_edit: "2025-5-20".to_string(),
+    //     tags: "#test".to_string(),
+    //     html_blog_content: "<p>
+    //         In blog #{blog_title}, we show how the Dioxus router works and
+    //         how URL parameters can be passed as props to our route components.
+    //     </p>"
+    //         .to_string(),
+    // })
 }
 
 #[component]
@@ -105,15 +146,6 @@ pub fn Blogs(page_num: u32) -> Element {
                 }
                 p { "These blogs are my opinion and mine alone" }
             }
-            // Link { to: Route::Home {},
-            //     button { "Home" }
-            // }
-            // Link {
-            //     to: Route::Blog {
-            //         blog_title: "Test_Blog".to_string(),
-            //     },
-            //     button { "To Test Blog" }
-            // }
             div {
                 if let Some(blogs) = &*blogs_resource.read() {
                     if blogs.len() > 0 {
@@ -126,7 +158,12 @@ pub fn Blogs(page_num: u32) -> Element {
                                 div { dangerous_inner_html: blog.html_blog_content.as_str(),
                                     h1 { "{blog.blog_title}" }
                                     div {
-                                        p { "{blog.tags}" }
+                                        div {
+                                            for tag in &blog.tags {
+                                                p { "{tag}" }
+                                            }
+                                        }
+                                        // p { "{blog.tags}" }
                                         p { "{blog.date_last_edit}" }
                                     }
                                 }
@@ -185,7 +222,7 @@ struct BlogContent {
     pub blog_file_name: String,
     pub date_last_edit: String,
     pub blog_title: String,
-    pub tags: String,
+    pub tags: Vec<String>,
     pub html_blog_content: String,
 }
 
@@ -216,6 +253,5 @@ async fn get_blogs_preview(
     )
     .unwrap_or_default();
 
-    // tracing::info!("{:?}", blogs);
     Ok(blogs)
 }

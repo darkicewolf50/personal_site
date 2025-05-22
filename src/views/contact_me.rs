@@ -92,11 +92,7 @@ async fn send_message(name: String, email: String, message: String, mut recived:
     });
 
     let client = Client::new();
-    let res = client
-                .post("https://discord.com/api/webhooks/1371617469281861772/uARm18pvzzs4DVNLSYNYCyl7CQk_7eglqGmBabQASow2L7NHgGRHzQhkSAKaOIZmLnn1")
-                .json(&json_to_send)
-                .send()
-                .await;
+    let res = client.post("").json(&json_to_send).send().await;
     match res {
         Ok(_) => {
             recived.set("Sent Sucessfully, I will be in contact with you soon".to_string());
