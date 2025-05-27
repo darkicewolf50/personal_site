@@ -4,7 +4,7 @@ use serde_json;
 // use dioxus::logger::tracing;
 use dioxus::prelude::*;
 
-use crate::{helper_fun::set_meta_tags, views::Contact};
+use crate::views::Contact;
 
 #[component]
 pub fn ContactMe() -> Element {
@@ -17,10 +17,6 @@ pub fn ContactMe() -> Element {
     rsx! {
         document::Stylesheet { href: asset!("/assets/styling/contactme.css") }
         document::Title { "Brock Tomlinson - Contact" }
-        set_meta_tags {
-            description: "Get in Touch, get in contact",
-            keywords: "contact software engineer webdev",
-        }
         div { id: "ContactMe",
             div {
                 h2 { "Get in Touch" }

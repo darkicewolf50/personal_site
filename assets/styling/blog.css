@@ -45,6 +45,7 @@
 	border-radius: 1rem;
 	padding: 0.25svh 8px;
 	margin: 0svh 0.25svh;
+	text-align: center;
 }
 
 #blog a {
@@ -65,13 +66,17 @@ h3 {
 	margin: 0px;
 	padding: 1svh 0svw;
 	border-bottom: none;
-	/* border-bottom: var(--underlineTitle);
-	border-radius: var(--underlineTitleBorderRadius); */
 }
 
 #blog_content p {
 	padding: 1svh 0svw;
 	margin: 0px;
+	text-wrap: wrap;
+	max-width: 25rem;
+}
+
+#blog #blog_content p {
+	max-width: max-content;
 }
 
 #blogs {
@@ -132,10 +137,17 @@ h3 {
 	border: 2px solid rgba(145, 164, 210, 0.4);
 	border-radius: var(--card-border-radius);
 	font-size: medium;
+	margin-top: auto;
+	margin-bottom: 4svh;
 }
 #blogs .blog-preview #blog_info div p:last-child {
 	margin-right: 0svh;
 	margin-left: 2svw;
+}
+
+#blogs .blog-preview #blog_info div div p:last-child {
+	margin: 0svh 0.25svh;
+	padding: 0.25svh 8px;
 }
 
 #blogs-title {

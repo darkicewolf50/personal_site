@@ -1,4 +1,4 @@
-use crate::helper_fun::{get_tech_logos_from_str, set_meta_tags};
+use crate::helper_fun::get_tech_logos_from_str;
 use dioxus::prelude::*;
 
 #[component]
@@ -6,10 +6,6 @@ pub fn Projects(#[props(default = true)] independent_page: bool) -> Element {
     rsx! {
         if independent_page {
             document::Title { "Brock Tomlinson - Projects" }
-            set_meta_tags {
-                description: "Top Featured and Recent Projects",
-                keywords: "projects Rust CSS HTML JavaScript Dioxus Gitea Git software engineer",
-            }
         }
         div {
             h2 { "Projects" }
@@ -17,21 +13,43 @@ pub fn Projects(#[props(default = true)] independent_page: bool) -> Element {
         }
         div { class: "project-section",
             ProjectCards {
-                project_name: "Portfolio Site Version 1.1.0",
+                project_name: "Personal Backend",
+                gitea_link: "https://gitea.bajacloud.duckdns.org/darkicewolf50/darkicewolf50Cloud",
+                dockerhub_link: "https://hub.docker.com/r/darkicewolf50/darkicewolf50cloud",
+                project_img: "https://actix.rs/img/logo.png",
+                techs_used: vec![
+                    "Rust",
+                    "Actix",
+                    "Github Actions",
+                    "Docker",
+                    "Traefik",
+                    "Gitea",
+                    "Git",
+                    "Github",
+                ],
+                project_des: "I find that this is a much better option in compareision to FastAPI as it does not require a post request
+            to input data instead it give the option for the url to give the parameters it needs. I don't have any complains about using Actix, its mature stable and fairly popular. 
+            This backend application also uses comrak to convert markdown blogs into html docuemnts that are then seen by you the user. 
+            This honestly was a fun challenge getting the blogs previews, ensuring correctness and not allowing for any unknown states, 
+            this will serve as a great basis for any future backend requirements that I may have.",
+            }
+            ProjectCards {
+                project_name: "Portfolio Site Version 2.0.1",
                 website_link: "https://darkicewolf50.pages.dev",
                 gitea_link: "https://gitea.bajacloud.duckdns.org/darkicewolf50/personal_site",
                 project_img: "https://res.cloudinary.com/dpgrgsh7g/image/upload/v1745630861/Portfolio_site_k4mhmj.png",
                 techs_used: vec!["Rust", "CSS", "Dioxus", "Git", "Gitea"],
                 project_des: "This project was a great test of my newly learned Rust.
-            This minor update added functionality for the contact me, the ground work for the blogs part of the site, as well as many minor 
+            This major update added functionality for the contact me, the blogs part of the site, as well as many minor 
             UI consistencies to ensure that all of the buttons and links felt like buttons and links.
             I was surprise how easy it was to set up a discord webhook using the 'reqwest' crate. 
             As I continue on I find myself struggling with how and why to use databases for content I generate. 
             I think using tools like disocrd webhooks and email notifications are great for users but certainly not great for reading data from. 
-            The part I am both excited for and deading is going to be the blogs component which I believe I have solved for now.",
+            I was very satisfied with serde, and comrak for converting markdown fiels into html. 
+            I use this extensively for the blogs search menu and the blog itself to display the blog itself in a consistent way without needing to write a whole library.",
             }
             ProjectCards {
-                project_name: "Portfolio Site",
+                project_name: "Portfolio Site 1.0.0",
                 website_link: "https://darkicewolf50.github.io",
                 github_link: "https://github.com/darkicewolf50/darkicewolf50.github.io",
                 project_img: "https://res.cloudinary.com/dpgrgsh7g/image/upload/v1745630861/Portfolio_site_k4mhmj.png",
@@ -44,6 +62,7 @@ pub fn Projects(#[props(default = true)] independent_page: bool) -> Element {
             ProjectCards {
                 project_name: "UCalgary Baja Backend",
                 project_img: "https://www.svgrepo.com/show/448221/docker.svg",
+                dockerhub_link: "https://hub.docker.com/r/darkicewolf50/uofcbajacloud",
                 techs_used: vec!["Python", "FastAPI", "Github Actions", "Docker", "Traefik", "Git", "Github"],
                 project_des: "This is going to be extremely cost saving for the non-profit club UCalgary Baja.
                 Using automated uploads and linting to check the Python and FastAPI code was excellent for learning how to self-host a web server.
@@ -83,6 +102,7 @@ pub fn ProjectCards(
     website_link: Option<&'static str>,
     github_link: Option<&'static str>,
     gitea_link: Option<&'static str>,
+    dockerhub_link: Option<&'static str>,
     project_name: &'static str,
     techs_used: Vec<&'static str>,
     project_des: &'static str,
@@ -106,6 +126,11 @@ pub fn ProjectCards(
                     if let Some(gitea_site) = gitea_link {
                         a { href: "{gitea_site}", id: "gitea",
                             get_tech_logos_from_str { used_tech: "Gitea" }
+                        }
+                    }
+                    if let Some(dockerhub) = dockerhub_link {
+                        a { href: "{dockerhub}", id: "dockerhub",
+                            get_tech_logos_from_str { used_tech: "Docker" }
                         }
                     }
                     if let Some(site) = website_link {

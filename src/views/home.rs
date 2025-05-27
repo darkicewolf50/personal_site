@@ -38,7 +38,7 @@ pub fn Home() -> Element {
                 I am developing the language of how to design, develop, and create programs that are to industry standards and reasonably efficent. 
                 I bring the lessons learned from each project I have completed, 
                 learning from the mistakes I have made and bringing improved versions forward into the next project.",
-            keywords: "dev webdev Rust rust-lang software engineer",
+            keywords: "webdev Rust software engineer projects blog darkicewol50",
         }
         div {
             div { id: "home-intro",

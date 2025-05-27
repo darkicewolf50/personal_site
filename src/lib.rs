@@ -1,6 +1,5 @@
 use dioxus::prelude::*;
 
-pub use helper_fun::set_meta_tags;
 // use components::Hero;
 use views::{Blog, Blogs, ContactMe, Home, Navbar, NewHome, Projects};
 
@@ -55,7 +54,6 @@ fn PageNotFound(route: Vec<String>) -> Element {
     rsx! {
         document::Stylesheet { href: asset!("/assets/styling/notFound.css") }
         document::Title { "Brock Tomlinson - Not Found" }
-        set_meta_tags { description: "This is not a valid page", keywords: "404 Nothing" }
         div { id: "not-found",
             h1 { "Page not found" }
             p { "We are terribly sorry, but the page you requested doesn't exist." }
@@ -65,15 +63,3 @@ fn PageNotFound(route: Vec<String>) -> Element {
         }
     }
 }
-
-// The server function at the endpoint "static_routes" will be called by the CLI to generate the list of static
-// routes. You must explicitly set the endpoint to `"static_routes"` in the server function attribute instead of
-// the default randomly generated endpoint.
-// #[server(endpoint = "static_routes", output = server_fn::codec::Json)]
-// async fn static_routes() -> Result<Vec<String>, ServerFnError> {
-//     // The `Routable` trait has a `static_routes` method that returns all static routes in the enum
-//     Ok(Route::static_routes()
-//         .iter()
-//         .map(ToString::to_string)
-//         .collect())
-// }

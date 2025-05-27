@@ -1,10 +1,8 @@
-use crate::{set_meta_tags, Route};
+use crate::Route;
 // use dioxus::logger::tracing::info;
 use dioxus::prelude::*;
 use reqwest;
 use serde::{Deserialize, Serialize};
-
-// const BLOG_CSS: Asset = asset!("/assets/styling/blog.css");
 
 /// The Blog page component that will be rendered when the current route is `[Route::Blog]`
 ///
@@ -54,11 +52,6 @@ pub fn Blog(blog_title: String) -> Element {
             // span { " <---> " }
             Link { to: Route::Blogs { page_num: 0 }, "Go Back" }
             if let Some(blog_content) = &*blog_resource.read() {
-                document::Meta { name: "description", content: "{blog_content.blog_title}" }
-                document::Meta {
-                    name: "keywords",
-                    content: "webdev software engineer fullstack",
-                }
                 div { id: "blog_info",
                     h1 { "{blog_content.blog_title}" }
                     div {
@@ -85,7 +78,7 @@ async fn get_blog(blog_name: String) -> Result<BlogContent, reqwest::Error> {
     let client = reqwest::Client::new();
 
     let res = client
-        .get(format!("http://localhost:8000/blogs/blog/{}", blog_name))
+        .get(format!("/blogs/blog/{}", blog_name))
         .timeout(std::time::Duration::from_secs(10))
         .send()
         .await?
@@ -137,10 +130,6 @@ pub fn Blogs(page_num: u32) -> Element {
         document::Stylesheet { href: asset!("/assets/styling/blog.css") }
         div { id: "blogs",
             document::Title { "Brock Tomlinson - Blogs" }
-            set_meta_tags {
-                description: "This is a collection of blog posts, ranging from tutorials, technologies I found interesting, and opinion pieces",
-                keywords: "blogs blog software engineer webdev",
-            }
             div { id: "blogs-title",
                 h1 { "Blogs" }
                 p {
@@ -239,10 +228,7 @@ async fn get_blogs_preview(
     let client = reqwest::Client::new();
 
     let res = client
-        .get(format!(
-            "http://localhost:8000/blogs/{}/{}",
-            _num_limit, page_num
-        ))
+        .get(format!("blogs/{}/{}", _num_limit, page_num))
         .timeout(std::time::Duration::from_secs(10))
         .send()
         .await?
