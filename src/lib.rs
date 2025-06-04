@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 
 // use components::Hero;
-use views::{Blog, Blogs, ContactMe, Home, Navbar, NewHome, Projects};
+use views::{Blog, Blogs, ContactMe, Home, Navbar, Projects};
 
 /// Define a components module that contains all shared components for our app.
 mod components;
@@ -42,8 +42,8 @@ pub enum Route {
         #[route("/contact")]
         ContactMe {},
 
-        #[route("/new_home")]
-        NewHome {},
+        // #[route("/new_home")]
+        // NewHome {},
         // PageNotFound is a catch all route that will match any route and placing the matched segments in the route field
         #[route("/:..route")]
         PageNotFound { route: Vec<String> },

@@ -8,6 +8,14 @@
 	flex-direction: column;
 }
 
+#blog_info ul {
+	display: flex;
+	flex-direction: row;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
 #blog_info p {
 	padding: 2svh 0svw;
 	margin: 0px;
@@ -17,6 +25,7 @@
 	padding: 1svh 1svw;
 	margin: 2svh 0svw;
 	margin-bottom: 0px;
+	font-size: 2em;
 }
 
 #blog_info div {
@@ -40,7 +49,7 @@
 #blog_info div p:last-child {
 	margin-right: 10svh;
 }
-#blog_info div div p {
+#blog_info div ul li {
 	background-color: rgba(128, 0, 128, 0.2);
 	border-radius: 1rem;
 	padding: 0.25svh 8px;

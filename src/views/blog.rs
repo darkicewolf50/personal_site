@@ -29,7 +29,8 @@ pub fn Blog(blog_title: String) -> Element {
     rsx! {
         document::Stylesheet { href: asset!("/assets/styling/blog.css") }
         document::Title { "Brock Tomlinson - {blog_title.clone()}" }
-        document::Meta { name: "author", content: "Brock Tomlinson" }
+        // document::Meta { name: "author", content: "Brock Tomlinson" }
+        document::Meta { name: "robots", content: "noindex, nofollow" }
 
         div { id: "blog",
 
@@ -52,20 +53,22 @@ pub fn Blog(blog_title: String) -> Element {
             // span { " <---> " }
             Link { to: Route::Blogs { page_num: 0 }, "Go Back" }
             if let Some(blog_content) = &*blog_resource.read() {
-                div { id: "blog_info",
-                    h1 { "{blog_content.blog_title}" }
-                    div {
+                article {
+                    header { id: "blog_info",
+                        h1 { "{blog_content.blog_title}" }
                         div {
-                            for tag in &blog_content.tags {
-                                p { "{tag}" }
+                            ul {
+                                for tag in &blog_content.tags {
+                                    li { "{tag}" }
+                                }
                             }
+                            p { "{&blog_content.date_last_edit}" }
                         }
-                        p { "{&blog_content.date_last_edit}" }
                     }
-                }
-                div {
-                    id: "blog_content",
-                    dangerous_inner_html: *&blog_content.html_blog_content.as_str(),
+                    section {
+                        id: "blog_content",
+                        dangerous_inner_html: *&blog_content.html_blog_content.as_str(),
+                    }
                 }
             } else {
                 p { "Loading..." }
@@ -78,7 +81,7 @@ async fn get_blog(blog_name: String) -> Result<BlogContent, reqwest::Error> {
     let client = reqwest::Client::new();
 
     let res = client
-        .get(format!("/blogs/blog/{}", blog_name))
+        .get(format!("blogs/blog/{}", blog_name))
         .timeout(std::time::Duration::from_secs(10))
         .send()
         .await?
@@ -128,8 +131,9 @@ pub fn Blogs(page_num: u32) -> Element {
 
     rsx! {
         document::Stylesheet { href: asset!("/assets/styling/blog.css") }
+        document::Meta { name: "robots", content: "noindex, nofollow" }
+        document::Title { "Brock Tomlinson - Blogs" }
         div { id: "blogs",
-            document::Title { "Brock Tomlinson - Blogs" }
             div { id: "blogs-title",
                 h1 { "Blogs" }
                 p {
